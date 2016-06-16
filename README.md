@@ -9,10 +9,10 @@
 * 提交上线申请，应用市场上线
 
 ###架构介绍
-![](../images/framework.png)
+![](./images/framework.png)
 
 ###SDK注册审核流程
-![](../images/check.png)
+![](./images/check.png)
 
 ###SDK集成开发准备
 ####1.前往应用证书申请地址: [http://www.linkdood.cn/server-linkdood/reg](http://www.linkdood.cn/server-linkdood/reg)，申请开发所必须的证书（证书使用详见后面说明）
@@ -21,11 +21,9 @@
 ####下载地址:[http://blog.liandoudou.cn/doku.php?id=wiki:sdk](http://blog.liandoudou.cn/doku.php?id=wiki:sdk)
 ####4.本文详细介绍关于VIMSDKDemo相关说明（android studio开发环境）
 ####项目结构如下图：
-![](../images/android_doc_01.png)
-![](../images/android_doc_02.png)
-![](../images/android_doc_03.png)
-![](../images/android_doc_04.png)
+![](./images/android_doc_01.png)
+![](./images/android_doc_02.png)
+![](./images/android_doc_03.png)
+![](./images/android_doc_04.png)
 
 ####5.其他相关接口的调用请参看DEMO功能实现以及相关API文档
-
-**请参考文档[《IM基础功能(Android)开发指南》](../Android/describe.md)**
