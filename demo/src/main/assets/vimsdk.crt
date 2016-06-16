@@ -1,0 +1,82 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1048816 (0x1000f0)
+    Signature Algorithm: sha384WithRSAEncryption
+        Issuer: O=Beijing VRV Software Corporation Limited., OU=Mobile Interconnection Center, CN=VRV Trust NetWork
+        Validity
+            Not Before: Jun 14 00:56:35 2016 GMT
+            Not After : Jun 22 00:56:35 2026 GMT
+        Subject: C=CN, ST=Beijing, O=\xE5\xA7\xAC\xE5\xB0\x8F\xE6\x89\xAC, OU=/ct?c=VIMSDKDemo&an=com.vrv.sdk.demo, CN=VIMSDKDemo
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c4:07:c8:a8:dd:82:be:32:3c:44:d8:91:ce:ee:
+                    f1:9e:5b:1c:2b:60:b2:1a:c1:c3:68:ea:ef:47:a5:
+                    88:3a:2d:08:00:10:e8:c1:84:c5:d8:c1:5a:91:81:
+                    fd:ef:03:55:14:04:77:9c:2a:0a:1f:6b:64:13:37:
+                    72:b2:dc:6e:44:af:ea:66:e5:5b:56:29:a0:90:d2:
+                    fc:4a:35:ec:b8:d5:e7:f0:8f:60:19:6c:94:82:de:
+                    2c:84:0b:28:09:ef:48:44:43:61:97:a5:a6:04:7a:
+                    a2:de:75:6e:a4:75:aa:4f:55:b0:4d:69:ad:b4:65:
+                    fb:f2:1f:59:a6:8f:3a:de:53:3c:86:2f:5a:3a:39:
+                    2f:33:b7:43:e2:94:01:2c:b1:7a:f1:76:f9:a4:e8:
+                    c8:a0:86:b5:c4:59:29:e8:66:86:6a:20:3c:54:92:
+                    35:35:65:04:7e:a3:97:ad:a7:11:4c:8b:52:c8:ff:
+                    bd:92:bc:f5:7a:70:6c:5d:47:a0:36:54:4a:d6:1b:
+                    c4:b8:1d:a7:82:c1:f2:0f:0b:cc:14:f2:7d:7f:fb:
+                    79:84:9c:c3:b8:e7:cf:17:85:e7:ff:e4:be:31:1e:
+                    1c:2c:64:57:69:ce:1e:2c:94:71:4c:bb:c8:1b:89:
+                    a1:08:6f:46:07:14:91:b9:93:d1:bf:26:9c:74:5d:
+                    9c:f3
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                www.linkdood.com
+            X509v3 Subject Key Identifier: 
+                28:48:0C:B9:39:30:E5:9B:0F:7A:C0:E7:F6:83:AD:70:5C:FD:D8:82
+            X509v3 Authority Key Identifier: 
+                keyid:73:CE:F9:8F:ED:CD:76:66:60:5F:C4:1E:17:CF:52:90:D3:90:FC:33
+
+    Signature Algorithm: sha384WithRSAEncryption
+         2c:8c:b4:d4:2e:93:2a:16:53:37:aa:56:ef:ab:d7:9a:3b:51:
+         90:b0:a0:eb:8e:51:e5:1c:3e:cb:83:42:6e:27:c5:30:03:23:
+         b0:c6:c8:ba:d4:7d:97:7d:82:bc:7e:0c:3e:ff:88:f8:d2:1d:
+         aa:88:df:98:bb:fd:33:de:5d:81:23:88:70:15:1b:f0:13:32:
+         8f:a1:0e:b3:e0:3f:f4:d1:c1:da:5b:49:1e:9f:07:ae:b0:90:
+         fa:a9:01:ac:f2:a1:c2:78:ea:c9:d6:04:5f:09:c3:a4:d9:f5:
+         68:5b:21:8e:6f:64:77:96:44:e9:d8:51:d7:dc:70:51:2f:12:
+         56:58:c6:77:13:eb:2e:44:68:68:46:38:36:db:84:08:84:c0:
+         50:ac:8d:80:9e:ce:c8:8f:59:90:bf:77:44:ac:09:4e:cb:e0:
+         6f:2d:4f:80:14:39:12:d7:df:27:7b:45:f6:10:9c:15:34:40:
+         c3:93:1d:aa:8f:34:f1:cc:d4:a2:e1:1c:fe:96:8c:07:ef:1b:
+         0b:70:f4:0c:20:a3:35:4e:65:ef:15:57:75:df:b6:86:56:c5:
+         85:b7:7b:1a:5d:de:b4:14:17:ca:da:e5:db:72:aa:9f:eb:41:
+         1b:9d:b6:aa:ee:57:0c:80:c3:a3:c5:88:0d:31:5e:ac:f0:69:
+         2f:bd:76:69
+-----BEGIN CERTIFICATE-----
+MIID2jCCAsKgAwIBAgIDEADwMA0GCSqGSIb3DQEBDAUAMHgxMjAwBgNVBAoMKUJl
+aWppbmcgVlJWIFNvZnR3YXJlIENvcnBvcmF0aW9uIExpbWl0ZWQuMSYwJAYDVQQL
+DB1Nb2JpbGUgSW50ZXJjb25uZWN0aW9uIENlbnRlcjEaMBgGA1UEAwwRVlJWIFRy
+dXN0IE5ldFdvcmswHhcNMTYwNjE0MDA1NjM1WhcNMjYwNjIyMDA1NjM1WjB3MQsw
+CQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzESMBAGA1UECgwJ5aes5bCP5oms
+MS0wKwYDVQQLDCQvY3Q/Yz1WSU1TREtEZW1vJmFuPWNvbS52cnYuc2RrLmRlbW8x
+EzARBgNVBAMMClZJTVNES0RlbW8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQDEB8io3YK+MjxE2JHO7vGeWxwrYLIawcNo6u9HpYg6LQgAEOjBhMXYwVqR
+gf3vA1UUBHecKgofa2QTN3Ky3G5Er+pm5VtWKaCQ0vxKNey41efwj2AZbJSC3iyE
+CygJ70hEQ2GXpaYEeqLedW6kdapPVbBNaa20ZfvyH1mmjzreUzyGL1o6OS8zt0Pi
+lAEssXrxdvmk6MighrXEWSnoZoZqIDxUkjU1ZQR+o5etpxFMi1LI/72SvPV6cGxd
+R6A2VErWG8S4HaeCwfIPC8wU8n1/+3mEnMO4588Xhef/5L4xHhwsZFdpzh4slHFM
+u8gbiaEIb0YHFJG5k9G/Jpx0XZzzAgMBAAGjbjBsMAkGA1UdEwQCMAAwHwYJYIZI
+AYb4QgENBBIWEHd3dy5saW5rZG9vZC5jb20wHQYDVR0OBBYEFChIDLk5MOWbD3rA
+5/aDrXBc/diCMB8GA1UdIwQYMBaAFHPO+Y/tzXZmYF/EHhfPUpDTkPwzMA0GCSqG
+SIb3DQEBDAUAA4IBAQAsjLTULpMqFlM3qlbvq9eaO1GQsKDrjlHlHD7Lg0JuJ8Uw
+AyOwxsi61H2XfYK8fgw+/4j40h2qiN+Yu/0z3l2BI4hwFRvwEzKPoQ6z4D/00cHa
+W0kenweusJD6qQGs8qHCeOrJ1gRfCcOk2fVoWyGOb2R3lkTp2FHX3HBRLxJWWMZ3
+E+suRGhoRjg224QIhMBQrI2Ans7Ij1mQv3dErAlOy+BvLU+AFDkS198ne0X2EJwV
+NEDDkx2qjzTxzNSi4Rz+lowH7xsLcPQMIKM1TmXvFVd137aGVsWFt3saXd60FBfK
+2uXbcqqf60Ebnbaq7lcMgMOjxYgNMV6s8GkvvXZp
+-----END CERTIFICATE-----

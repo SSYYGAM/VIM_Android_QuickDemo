@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc_thumb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/vim_black"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_thumb"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:background="@color/vim_gray"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/tv_thumb_dir"
+                style="@style/Vim_ItemWhiteTxStyle"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="4dp"
+                android:background="@drawable/vim_spinner_corner_bg"
+                android:paddingLeft="12dp"
+                android:layout_centerVertical="true"
+                android:paddingRight="16dp"
+                android:text="@string/vim_more" />
+
+            <TextView
+                android:id="@+id/tv_thumb_pages"
+                style="@style/Vim_ItemWhiteTxStyle"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:visibility="gone"
+                android:text="@string/vim_photoPages" />
+
+            <TextView
+                android:id="@+id/tv_thumb_preview"
+                style="@style/Vim_ItemWhiteTxStyle"
+                android:layout_alignParentRight="true"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/vim_preview" />
+
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

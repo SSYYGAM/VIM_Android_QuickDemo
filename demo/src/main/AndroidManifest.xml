@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vrv.sdk.demo" >
+
+    <application
+        android:name="com.vrv.sdk.demo.DemoApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/SDKBaseTheme" >
+        <!--登录界面-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!--注册界面-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterActivity"/>
+        <!--注册第二步-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterStepActivity"/>
+        <!--会话界面-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.MainActivity"/>
+        <!-- 群列表界面 -->
+        <activity android:name="com.vrv.sdk.library.ui.activity.GroupListActivity"/>
+        <!--聊天界面-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.ChatActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+        <!--好友信息-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.ContactDetailActivity"/>
+        <!--查找好友-->
+        <activity android:name="com.vrv.sdk.library.ui.activity.SearchActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosThumbnailActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.ChatPhotosActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosCropActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosPreviewActivity"/>
+
+        <!--必须添加的组件  begin-->
+        <service android:name="com.vrv.imsdk.service.ApNotifyService"/>
+        <receiver android:name="com.vrv.imsdk.receiver.ApNotifyReceiver">
+            <intent-filter>
+                <action android:name="com.vrv.imsdk.receiver.ApNotifyReceiver"/>
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="com.vrv.imsdk"
+            android:value="0l"/>
+        <!--必须添加的组件  end-->
+    </application>
+    <!--必须的权限 begin-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TOP_ACTIVITY_INFO"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <!-- 保持唤醒 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!--必须的权限 end-->
+
+</manifest>

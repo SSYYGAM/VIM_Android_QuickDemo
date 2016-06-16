@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- vim_toolbar（actionbar）颜色 -->
+    <color name="vim_colorPrimary">#f8f8f8</color>
+    <!-- 状态栏颜色 -->
+    <color name="vim_colorPrimaryDark">@color/vim_transparent</color>
+    <color name="vim_windowBackground">@color/vim_background</color>
+    <!--应用背景-->
+    <color name="vim_background">#F0F0F0</color>
+
+    <!-- tab -->
+    <color name="vim_tab_bg">#f6f6f6</color>
+    <color name="vim_tab_normal">#7e7e7e</color>
+    <color name="vim_tab_selected">#00b9ed</color>
+    <!--text-->
+    <color name="vim_tx_normal">#484848</color>
+    <color name="vim_tx_black">#333333</color>
+    <color name="vim_tx_gray">#999999</color>
+    <!--button-->
+    <color name="vim_bt_normal">#00b4ff</color>
+    <color name="vim_bt_pressed">#BB00b4ff</color>
+    <!--分割线-->
+    <color name="vim_divider">#DBDBDE</color>
+
+    <color name="vim_transparent">@android:color/transparent</color>
+    <color name="vim_white">@android:color/white</color>
+    <color name="vim_black">@android:color/black</color>
+    <color name="vim_green">#21AE37</color>
+    <color name="vim_gray">#cc6d6d6d</color>
+    <color name="vim_red">#ff0000</color>
+    <color name="vim_blue">#00b9ed</color>
+</resources>
