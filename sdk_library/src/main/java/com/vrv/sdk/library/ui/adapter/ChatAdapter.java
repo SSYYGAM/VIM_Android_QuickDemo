@@ -1,6 +1,7 @@
 package com.vrv.sdk.library.ui.adapter;
 
 import android.content.Context;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vrv.imsdk.api.ChatMsgApi;
+import com.vrv.imsdk.bean.NoteInfoBean;
 import com.vrv.imsdk.model.ChatMsg;
+import com.vrv.imsdk.model.GroupMember;
 import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.bean.BaseInfoBean;
@@ -19,6 +22,10 @@ import com.vrv.sdk.library.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vrv.sdk.library.ui.activity.*;
+import com.vrv.sdk.library.bean.*;
+
 
 import static com.vrv.sdk.library.utils.TimeUtils.timeStamp2Date;
 
@@ -104,9 +111,26 @@ public class ChatAdapter extends BaseAdapter {
             }
             Utils.loadHead(activity, path, holder.mImageView, R.mipmap.vim_icon_default_user);
         }
+        chatMsg = addName2Chatmsg(chatMsg);
         holder.mMessageFromDate.setText(timeStamp2Date(chatMsg.getSendTime(), 3));
         holder.viewMessage.setViews(chatMsg, false, false);
         holder.viewMessage.setReSendListener(reSendListener);
+        holder.viewMessage.setItemDataChangeListener(new ChatMessageView.ItemDataChangeListener() {
+            @Override
+            public void ItemDataChange(boolean isShowCheckbox) {
+
+            }
+
+            @Override
+            public void onItemOperation(int type, final ChatMsg msg) {
+                switch (type) {
+                    case OptionBean.TYPE_OPTION_MSG_DELETE:
+                        deleteRemove(ChatActivity.getChatID(), msg, true);
+                        break;
+                }
+            }
+
+        });
         return convertView;
     }
 
@@ -118,5 +142,32 @@ public class ChatAdapter extends BaseAdapter {
 
         ViewHolder(View view) {
         }
+    }
+
+    private ChatMsg addName2Chatmsg(ChatMsg msgBean) {
+        if (RequestHelper.isMyself(msgBean.getSendID())) {
+            msgBean.setName(RequestHelper.getMyInfo().getName());
+        } else if (ChatMsgApi.isUser(msgBean.getTargetID()) || ChatMsgApi.isApp(msgBean.getTargetID())) {
+            msgBean.setName(baseInfoBean.getName());
+        } else if (ChatMsgApi.isGroup(msgBean.getTargetID())) {
+            final GroupMember member = ChatActivity.getMemberBean(msgBean.getSendID());
+            if (member != null) {
+                msgBean.setName(member.getMemberName());
+            }
+        }
+        return msgBean;
+    }
+
+    /**
+     * @param chatID
+     * @param msg       彻底删除消息
+     * @param isRefresh
+     */
+    private void deleteRemove(long chatID, ChatMsg msg, boolean isRefresh) {
+        ArrayList<Long> ids = new ArrayList<Long>();
+        ids.add(msg.getMessageID());
+        RequestHelper.deleteMsgByID(ChatActivity.getChatID(), ids);
+        msgList.remove(msg);
+        notifyDataSetChanged();
     }
 }

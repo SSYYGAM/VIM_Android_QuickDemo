@@ -18,6 +18,7 @@ import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.bean.BaseInfoBean;
 import com.vrv.sdk.library.ui.activity.ChatActivity;
 import com.vrv.sdk.library.ui.adapter.ConversationListAdapter;
+import com.vrv.sdk.library.utils.ToastUtil;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class ConversationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         context = this.getActivity();
-        if (rootView == null){
+        if (rootView == null) {
             rootView = inflater.inflate(R.layout.vim_fragment_conversation, container, false);
             initView(rootView);
         }
@@ -55,8 +56,10 @@ public class ConversationFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BaseInfoBean baseInfoBean = BaseInfoBean.chat2BaseInfo(msgList.get(position));
-                if (ChatMsgApi.isUser(baseInfoBean.getID())){
+                if (ChatMsgApi.isUser(baseInfoBean.getID()) || ChatMsgApi.isGroup(baseInfoBean.getID())) {
                     ChatActivity.start(context, baseInfoBean);
+                } else {
+                    ToastUtil.showShort(context, "请选择群或者个人聊天");
                 }
             }
         });

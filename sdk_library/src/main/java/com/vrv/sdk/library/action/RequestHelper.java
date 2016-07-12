@@ -17,6 +17,7 @@ import com.vrv.imsdk.model.Contact;
 import com.vrv.imsdk.model.Group;
 import com.vrv.imsdk.model.GroupMember;
 import com.vrv.imsdk.model.SystemMsg;
+import com.vrv.sdk.library.ui.activity.ChatActivity;
 
 import java.util.ArrayList;
 
@@ -170,6 +171,7 @@ public class RequestHelper {
     public static boolean sendTxt(long targetID, String text, ArrayList<Long> relatedUsers, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createTxtMsg(text);
+        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         builder.setRelatedUsers(relatedUsers);
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
@@ -178,6 +180,7 @@ public class RequestHelper {
     public static boolean sendImg(long targetID, String imgPath, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createImageMsg(imgPath);
+        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -185,6 +188,7 @@ public class RequestHelper {
     public static boolean sendFile(long targetID, String filePath, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createFileMsg(filePath);
+        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -199,6 +203,7 @@ public class RequestHelper {
     public static boolean sendPosition(long targetID, String address, String latitude, String longitude, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createPositionMsg(address, latitude, longitude);
+        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -214,6 +219,7 @@ public class RequestHelper {
     public static boolean sendAudio(long targetID, String audioPath, int time, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createAudioMsg(audioPath, time);
+        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 

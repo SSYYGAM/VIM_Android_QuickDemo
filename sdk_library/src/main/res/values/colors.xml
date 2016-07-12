@@ -29,4 +29,6 @@
     <color name="vim_gray">#cc6d6d6d</color>
     <color name="vim_red">#ff0000</color>
     <color name="vim_blue">#00b9ed</color>
+    <color name="vim_keyboard_burn_color">#ff5555</color>
+    <color name="vim_base_bg_gray">#EBEBEB</color>
 </resources>

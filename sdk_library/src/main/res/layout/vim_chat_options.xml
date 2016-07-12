@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Vim_ChatPanelStyle">
+       style="@style/Vim_ChatPanelStyle">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#d5d3d5" />
+        android:background="#d5d3d5"/>
 
     <LinearLayout
         android:id="@+id/panel_content"
@@ -25,6 +25,12 @@
             android:id="@+id/send_img_tv"
             style="@style/Vim_ChatPanelItemStyle"
             android:drawableTop="@mipmap/vim_icon_chat_image"
-            android:text="@string/vim_images" />
+            android:text="@string/vim_images"/>
+
+        <TextView
+            android:id="@+id/send_burn_tv"
+            style="@style/Vim_ChatPanelItemStyle"
+            android:drawableTop="@mipmap/vim_icon_chat_image"
+            android:text="@string/vim_burn"/>
     </LinearLayout>
 </merge>

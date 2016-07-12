@@ -27,6 +27,7 @@ import com.vrv.imsdk.model.ChatMsg;
 
 import com.vrv.imsdk.model.ChatMsgService;
 import com.vrv.imsdk.model.Contact;
+import com.vrv.imsdk.model.GroupMember;
 import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.action.RequestHandler;
 import com.vrv.sdk.library.action.RequestHelper;
@@ -51,6 +52,7 @@ public class ChatActivity extends AppCompatActivity {
     private EditText mSendEdt;
     private KPSwitchPanelLinearLayout mPanelRoot;
     private TextView mSendImgTv;
+    private TextView mSendBurnTv;
     private TextView mTakeImgTv;
     private ImageView mPlusIv;
     private Toolbar toolbar;
@@ -62,8 +64,9 @@ public class ChatActivity extends AppCompatActivity {
     private BaseInfoBean baseInfo;
     private boolean isRefreshing;//是否加载历史聊天记录
     private String photoPath;
-    private static ArrayList<Contact> memberList = new ArrayList<>();
+    private static ArrayList<GroupMember> memberList = new ArrayList<>();
     private static ArrayList<ChatMsg> msgList = new ArrayList<>();
+    public static boolean isBurn = false;
 
     public static void start(Context context, BaseInfoBean baseInfoBean) {
         Intent intent = new Intent();
@@ -77,7 +80,7 @@ public class ChatActivity extends AppCompatActivity {
         return chatID;
     }
 
-    public static ArrayList<Contact> getMemberList() {
+    public static ArrayList<GroupMember> getMemberList() {
         if (memberList == null) {
             memberList = new ArrayList<>();
         }
@@ -91,14 +94,15 @@ public class ChatActivity extends AppCompatActivity {
         return msgList;
     }
 
-    public static Contact getMemberBean(long userID) {
-        for (Contact bean : getMemberList()) {
+    public static GroupMember getMemberBean(long userID) {
+        for (GroupMember bean : getMemberList()) {
             if (bean.getId() == userID) {
                 return bean;
             }
         }
         return null;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +114,7 @@ public class ChatActivity extends AppCompatActivity {
         setView();
         operateKeyboard();
         setListener();
+        isBurn = false;
     }
 
     private void setToolbar() {
@@ -153,6 +158,7 @@ public class ChatActivity extends AppCompatActivity {
         mPanelRoot = (KPSwitchPanelLinearLayout) findViewById(R.id.panel_root);
         mTakeImgTv = (TextView) findViewById(R.id.take_img_tv);
         mSendImgTv = (TextView) findViewById(R.id.send_img_tv);
+        mSendBurnTv = (TextView) findViewById(R.id.send_burn_tv);
         mPlusIv = (ImageView) findViewById(R.id.plus_iv);
         mSendBtn = (TextView) findViewById(R.id.send_btn);
     }
@@ -192,13 +198,26 @@ public class ChatActivity extends AppCompatActivity {
         mTakeImgTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                photoPath = ImageUtil.takePic((Activity)context, OptionBean.TYPE_TAKE_PIC);
+                photoPath = ImageUtil.takePic((Activity) context, OptionBean.TYPE_TAKE_PIC);
             }
         });
         mSendImgTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PhotosThumbnailActivity.startForResult((ChatActivity) context, OptionBean.TYPE_PIC);
+            }
+        });
+        mSendBurnTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isBurn = !isBurn;
+                if (isBurn) {
+                    mSendEdt.setBackgroundResource(R.drawable.vim_chatting_edit_burn_bg);
+                    mSendBtn.setBackgroundResource(R.drawable.vim_chatting_send_burn_bg);
+                } else {
+                    mSendEdt.setBackgroundResource(R.drawable.vim_chatting_edit_bg);
+                    mSendBtn.setBackgroundResource(R.drawable.vim_chatting_send_bg);
+                }
             }
         });
         listView.setOnTouchListener(new View.OnTouchListener() {

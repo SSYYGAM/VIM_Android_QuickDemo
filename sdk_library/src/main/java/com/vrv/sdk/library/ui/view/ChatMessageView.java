@@ -17,7 +17,7 @@ import com.vrv.sdk.library.utils.DateTimeUtils;
 /**
  * Created by Yang on 2015/8/15 015.
  */
-public abstract class ChatMessageView extends LinearLayout implements View.OnClickListener {
+public abstract class ChatMessageView extends LinearLayout implements View.OnClickListener, View.OnLongClickListener {
 
     private final String TAG = ChatMessageView.class.getSimpleName();
 
@@ -155,11 +155,13 @@ public abstract class ChatMessageView extends LinearLayout implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.fl_chat_content) {
-            clickMsg();
+        itemView.onClick();
+    }
 
-        }
+    @Override
+    public boolean onLongClick(View view) {
+        itemView.onLongClick();
+        return true;
     }
 
     private void clickMsg() {
@@ -175,11 +177,34 @@ public abstract class ChatMessageView extends LinearLayout implements View.OnCli
     }
 
     protected void setListeners() {
-        flMsg.setOnClickListener(this);
-        setItemLongClick();
+        itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
+        itemView.setItemDataChangeListener(new ChatMsgItemView.ItemDataChangeListener() {
+            @Override
+            public void ItemDataChange(boolean isShowCheckbox) {
+                itemDataChangeListener.ItemDataChange(isShowCheckbox);
+            }
+
+            @Override
+            public void onItemOperation(int type, ChatMsg msg) {
+                itemDataChangeListener.onItemOperation(type, msg);
+            }
+        });
+
     }
 
-    private void setItemLongClick() {
+    //长按消息体，操作消息需要更新页面，控制adapter，notifyDataSetChanged；此处暂时只传递值，
+    protected ItemDataChangeListener itemDataChangeListener;
 
+    public interface ItemDataChangeListener {
+        void ItemDataChange(boolean isShowCheckbox);
+
+        void onItemOperation(int type, ChatMsg msg);
+    }
+
+    public void setItemDataChangeListener(ItemDataChangeListener listener) {
+        if (listener != null) {
+            this.itemDataChangeListener = listener;
+        }
     }
 }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.vrv.imsdk.SDKClient;
 import com.vrv.imsdk.model.Contact;
 import com.vrv.imsdk.model.ServiceModel;
@@ -62,18 +63,20 @@ public class ContactFragment extends Fragment {
         contacts.addAll(SDKClient.instance().getContactService().getList());
         listView.setAdapter(adapter = new ContactsAdapter(context, contacts));
         indexBar.setListView(listView);
-        View headView = View.inflate(context, R.layout.vim_item_contact, null);
-        ImageView imageView = (ImageView) headView.findViewById(R.id.icon);
-        TextView name = (TextView) headView.findViewById(R.id.name_tv);
-        ImageUtil.loadDefaultHead(context, imageView, R.mipmap.vim_icon_default_group);
-        name.setText("群");
-        headView.setOnClickListener(new OnClickListener() {
 
+        RecyclerViewHeader headerView = (RecyclerViewHeader) rootView.findViewById(R.id.header);
+        // 群
+        headerView.findViewById(R.id.ll_contacts_group).setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 GroupListActivity.start((Activity) context);
             }
         });
+        ImageView imageView = (ImageView) headerView.findViewById(R.id.icon);
+        TextView name = (TextView) headerView.findViewById(R.id.name_tv);
+        ImageUtil.loadDefaultHead(context, imageView, R.mipmap.vim_icon_default_group);
+        name.setText("群");
+        headerView.attachTo(listView);
     }
 
     private void setViews() {

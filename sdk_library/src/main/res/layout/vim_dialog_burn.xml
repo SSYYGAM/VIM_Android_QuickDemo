@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="16dp"
+              android:background="@drawable/vim_burn_dialog_bg"
+              android:layout_margin="2dp">
+
+    <LinearLayout
+        android:id="@+id/fill_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="200dp"
+        android:padding="6dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/vim_burn_dialog_bg">
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/nprg_time"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progress="100"
+        android:progressDrawable="@drawable/vim_burn_progress_horizontal"
+        android:indeterminateDrawable="@color/vim_base_bg_gray"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"/>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="right"
+        android:text="@string/vim_burn_time"
+        android:textColor="@color/vim_red"/>
+
+    <Button
+        android:id="@+id/btn_burn"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/vim_burn_btn_selector"
+        android:textColor="@drawable/vim_burn_txt_selector"
+        android:text="@string/vim_instant_burn"/>
+</LinearLayout>
