@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.vrv.sdk.library.R;
-import com.vrv.sdk.library.SDKApp;
+import com.vrv.sdk.library.VimConstant;
 import com.vrv.sdk.library.action.RequestHandler;
 import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.utils.ToastUtil;
@@ -65,9 +65,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void setViews() {
-        edPhone.setText(SDKApp.ACCOUNT);
-        edPassword.setText(SDKApp.PASSWORD);
-        edServerCode.setText(SDKApp.SERVER);
+        edPhone.setText(VimConstant.ACCOUNT);
+        edPassword.setText(VimConstant.PASSWORD);
+        edServerCode.setText(VimConstant.SERVER);
     }
 
     @Override
@@ -90,10 +90,10 @@ public class LoginActivity extends BaseActivity {
         password = edPassword.getText().toString();
         serverCode = edServerCode.getText().toString().trim();
 
-        if (userName.length() > 4 && !TextUtils.isEmpty(password)) {
+        if (userName.length() >= 4 && !TextUtils.isEmpty(password)) {
             requestHandler = new LoginHandler(LoginHandler.TYPE_LOGIN, context);
             requestHandler.sendEmptyMessage(RequestHandler.SHOW_PRO);
-            boolean login = RequestHelper.login(userName, password, serverCode, SDKApp.NATIONAL_CODE, requestHandler);
+            boolean login = RequestHelper.login(userName, password, serverCode, VimConstant.NATIONAL_CODE, requestHandler);
             if (!login) {
                 requestHandler.sendEmptyMessage(RequestHandler.REQUEST_FALSE);
             }

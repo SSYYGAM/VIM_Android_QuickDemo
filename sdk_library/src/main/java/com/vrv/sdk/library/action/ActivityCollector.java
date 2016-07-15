@@ -44,13 +44,4 @@ public class ActivityCollector {
         }
         return activities.get(activities.size() - 1);
     }
-
-    public static void finishOthers() {
-        for (Activity activity : activities) {
-/*            if (!(activity instanceof MainActivity)) {
-                if (!activity.isFinishing())
-                    activity.finish();
-            }*/
-        }
-    }
 }

@@ -81,7 +81,7 @@ public class ConversationListAdapter extends BaseAdapter {
         }
         if (chat.getUnReadNum() > 0) {
             holder.unreadTv.setVisibility(View.VISIBLE);
-            holder.unreadTv.setText(String.valueOf(chat.getUnReadNum())+ "");
+            holder.unreadTv.setText(String.valueOf(chat.getUnReadNum()));
         } else {
             holder.unreadTv.setVisibility(View.INVISIBLE);
         }

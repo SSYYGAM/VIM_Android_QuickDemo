@@ -6,8 +6,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
+import com.vrv.imsdk.VIMClient;
 import com.vrv.imsdk.api.ResponseCode;
-import com.vrv.sdk.library.SDKApp;
 import com.vrv.sdk.library.utils.DialogUtil;
 import com.vrv.sdk.library.utils.ToastUtil;
 import com.vrv.sdk.library.utils.VrvLog;
@@ -112,7 +112,7 @@ public abstract class RequestHandler extends Handler {
             case ResponseCode.ERR_DB_UPDATE_FAIL:
                 toast = "数据库升级失败 Error DB Update fail";
                 break;
-            case ResponseCode.ERR_InviteMuchOtherEntMem:
+            case ResponseCode.ERR_INVITE_MUCH_ENT:
                 toast = "邀请互联成员太多 Error InviteMuchOtherEntMem";
                 break;
             case ResponseCode.ERR_MSG_ID_INVALID:
@@ -122,6 +122,6 @@ public abstract class RequestHandler extends Handler {
                 toast = "请求频繁 Error Request Frequent";
                 break;
         }
-        ToastUtil.showShort(SDKApp.getContext(), toast);
+        ToastUtil.showShort(VIMClient.getContext(), toast);
     }
 }

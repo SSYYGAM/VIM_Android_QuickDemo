@@ -19,7 +19,6 @@ import com.vrv.sdk.library.ui.activity.ChatPhotosActivity;
 import com.vrv.sdk.library.utils.FileUtils;
 import com.vrv.sdk.library.utils.ImageUtil;
 import com.vrv.sdk.library.utils.Utils;
-import com.vrv.sdk.library.utils.VrvLog;
 
 import java.util.ArrayList;
 
@@ -102,7 +101,6 @@ public class ChatImgView extends ChatMsgItemView {
                 width = max;
             }
         }
-        VrvLog.i(width + "X" + height);
         ViewGroup.LayoutParams params = imgView.getLayoutParams();
         params.width = width;
         params.height = height;

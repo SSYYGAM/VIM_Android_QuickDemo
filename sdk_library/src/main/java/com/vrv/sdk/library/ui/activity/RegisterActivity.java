@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.VimConstant;
 import com.vrv.sdk.library.action.RequestHandler;
 import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.utils.ToastUtil;
@@ -58,7 +59,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void setViews() {
-
+        edServerCode.setText(VimConstant.SERVER);
     }
 
     @Override

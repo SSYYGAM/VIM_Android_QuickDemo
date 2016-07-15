@@ -5,5 +5,5 @@
         android:id="@+id/action_add"
         android:icon="@mipmap/vim_action_add"
         android:title="添加好友/群"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

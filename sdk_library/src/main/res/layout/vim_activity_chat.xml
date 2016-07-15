@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,15 +18,17 @@
 
     <include layout="@layout/vim_view_list" />
 
-    <include layout="@layout/vim_chat_input" />
-
+    <include layout="@layout/vim_chat_input"/>
 
     <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
         android:id="@+id/panel_root"
         style="@style/Vim_ChatPanelStyle"
         android:visibility="gone">
 
-        <include layout="@layout/vim_chat_options" />
+        <com.vrv.sdk.library.ui.view.ChatInputOptionView
+            android:id="@+id/chat_option"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>
 
 </cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

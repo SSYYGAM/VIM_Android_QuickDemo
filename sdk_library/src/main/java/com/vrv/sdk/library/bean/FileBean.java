@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.widget.ImageView;
 
+import com.vrv.imsdk.VIMClient;
 import com.vrv.sdk.library.R;
-import com.vrv.sdk.library.SDKApp;
 import com.vrv.sdk.library.utils.ImageUtil;
 
 import java.text.DecimalFormat;
@@ -183,7 +183,7 @@ public class FileBean implements Parcelable{
 			/* 依扩展名的类型决定MimeType */
         if (end.equals("jpg") || end.equals("gif") || end.equals("png") || end.equals("jpeg") || end.equals("bmp")) {
             if (!TextUtils.isEmpty(filePath)){
-                ImageUtil.loadViewLocal(SDKApp.getContext(), filePath, view, R.mipmap.vim_file_icon_pic);
+                ImageUtil.loadViewLocal(VIMClient.getContext(), filePath, view, R.mipmap.vim_file_icon_pic);
             }else{
                 view.setImageResource(R.mipmap.vim_file_icon_pic);
             }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_chat_position"
+        android:layout_width="196dp"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/img_chat_position"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/vim_icon_position"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/tv_chat_position"
+            style="@style/Vim_ItemGrayTxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:maxLines="2"
+            android:minHeight="32dp"
+            android:singleLine="false"
+            android:text="@string/app_name"
+            android:textSize="14dp" />
+    </FrameLayout>
+</LinearLayout>

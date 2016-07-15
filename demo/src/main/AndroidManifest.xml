@@ -8,9 +8,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/SDKBaseTheme" >
+        android:theme="@style/AppTheme" >
         <!--登录界面-->
         <activity android:name="com.vrv.sdk.library.ui.activity.LoginActivity"
+            android:theme="@style/SDKBaseTheme"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -20,24 +21,41 @@
         </activity>
 
         <!--注册界面-->
-        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterActivity"
+            android:theme="@style/SDKBaseTheme"/>
         <!--注册第二步-->
-        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterStepActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterStepActivity"
+            android:theme="@style/SDKBaseTheme"/>
         <!--会话界面-->
-        <activity android:name="com.vrv.sdk.library.ui.activity.MainActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.MainActivity"
+            android:theme="@style/SDKBaseTheme"/>
         <!-- 群列表界面 -->
-        <activity android:name="com.vrv.sdk.library.ui.activity.GroupListActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.GroupListActivity"
+            android:theme="@style/SDKBaseTheme"/>
         <!--聊天界面-->
         <activity android:name="com.vrv.sdk.library.ui.activity.ChatActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+            android:theme="@style/SDKBaseTheme"/>
         <!--好友信息-->
-        <activity android:name="com.vrv.sdk.library.ui.activity.ContactDetailActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.ContactDetailActivity"
+            android:theme="@style/SDKBaseTheme"/>
         <!--查找好友-->
-        <activity android:name="com.vrv.sdk.library.ui.activity.SearchActivity"/>
-        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosThumbnailActivity"/>
-        <activity android:name="com.vrv.sdk.library.ui.activity.ChatPhotosActivity"/>
-        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosCropActivity"/>
-        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosPreviewActivity"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.SearchActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosThumbnailActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.ChatPhotosActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosCropActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.PhotosPreviewActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.SelectContactActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.FileSelectActivity"
+            android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.LocationActivity"
+            android:theme="@style/SDKBaseTheme"/>
 
         <!--必须添加的组件  begin-->
         <service android:name="com.vrv.imsdk.service.ApNotifyService"/>
@@ -50,6 +68,16 @@
             android:name="com.vrv.imsdk"
             android:value="0l"/>
         <!--必须添加的组件  end-->
+
+        <!-- 百度地图SDK -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="HUqE5FdZBcPCxuVkS4K7TNbM626w4shZ" />
     </application>
     <!--必须的权限 begin-->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -64,5 +92,10 @@
     <!-- 保持唤醒 -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <!--必须的权限 end-->
+    <!-- 百度地图需要权限 -->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
 </manifest>

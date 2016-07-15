@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 
 import com.vrv.imsdk.model.ChatMsg;
+import com.vrv.sdk.library.action.RequestHelper;
 
 /**
  * Created by Yang on 2015/11/3 003.
@@ -16,11 +17,13 @@ public abstract class ChatMsgItemView extends LinearLayout {
     protected ChatMsg msgBean;
     protected int type;
     protected String encryptKey;
+    protected boolean isMe = false;//是不是我发的消息
 
     public ChatMsgItemView(Context context, ChatMsg msgBean) {
         super(context);
         this.msgBean = msgBean;
         this.type = msgBean.getMessageType();
+        this.isMe = RequestHelper.isMyself(msgBean.getSendID());
         init(context);
     }
 

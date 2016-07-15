@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Vim_ItemH64Style">
+
+    <ImageView
+        android:id="@+id/img_file"
+        style="@style/Vim_ItemImgStyle"
+        android:layout_margin="8dp"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/Vim_ItemBlackTxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:gravity="bottom" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top">
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/Vim_ItemGrayTxStyle"
+                android:gravity="top" />
+
+            <TextView
+                android:id="@+id/tv_size"
+                style="@style/Vim_ItemGrayTxStyle"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/tv_time"
+                android:gravity="top|right" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

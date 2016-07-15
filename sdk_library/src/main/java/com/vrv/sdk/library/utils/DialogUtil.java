@@ -181,4 +181,27 @@ public class DialogUtil {
         builder.callback(buttonCallback);
         return builder.build();
     }
+
+    /**
+     * 默认取消按钮不做特殊操作
+     *
+     * @param context
+     * @param title
+     * @param content
+     * @param buttonCallback
+     */
+    public static void buildSelectDialog(Context context, String title, String content, MaterialDialog.SingleButtonCallback buttonCallback) {
+        buildSelectDialog(context, title, content, buttonCallback, null);
+    }
+
+    public static void buildSelectDialog(Context context, String title, String content, MaterialDialog.SingleButtonCallback buttonCallback, MaterialDialog.SingleButtonCallback cancelButtonCallback) {
+        new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .positiveText("确定")
+                .onPositive(buttonCallback)
+                .negativeText("取消")
+                .onNegative(cancelButtonCallback)
+                .show();
+    }
 }

@@ -34,9 +34,9 @@ public class ChatMsgItemFactory {
         int activeType = msgBean.getActiveType();
         switch (activeType) {
             case 1://阅后即焚
-                if (RequestHelper.isMyself(msgBean.getSendID())) {//自己发的要倒计时删除
+                if (RequestHelper.isMyself(msgBean.getSendID())){//自己发的要倒计时删除
                     return null;
-                } else {
+                }else {
                     return new ChatBurnView(context, msgBean);
                 }
         }
@@ -51,15 +51,26 @@ public class ChatMsgItemFactory {
                 return new ChatTxtView(context, msgBean);
             case ChatMsgApi.TYPE_IMAGE:
                 return new ChatImgView(context, msgBean);
-            case ChatMsgApi.TYPE_DYNAMIC:
             case ChatMsgApi.TYPE_FILE:
+                return new ChatFileView(context, msgBean);
             case ChatMsgApi.TYPE_AUDIO:
+                return new ChatAudioView(context, msgBean);
             case ChatMsgApi.TYPE_CARD:
+                return new ChatCardView(context, msgBean);
             case ChatMsgApi.TYPE_POSITION:
-                //            case ChatMsgApi.TYPE_WEB_LINK:
-                //            case ChatMsgApi.TYPE_NEWS:
-            case ChatMsgApi.TYPE_WEAK_HINT:
+                return new ChatPositionView(context, msgBean);
+            case ChatMsgApi.TYPE_DYNAMIC:
+//                return new ChatDynamicView(context, msgBean);
+            case ChatMsgApi.TYPE_WEB_LINK:
+            case ChatMsgApi.TYPE_NEWS:
+//                return new ChatWebLinkView(context, msgBean);
+            case ChatMsgApi.TYPE_MULTI:
+//                return new ChatCompositeView(context, msgBean);
             case ChatMsgApi.TYPE_VIDEO:
+            case ChatMsgApi.TYPE_VOICE:
+//                return new ChatVideoView(context,msgBean);
+            case ChatMsgApi.TYPE_WEAK_HINT:
+                //      return new ChatCompositeView(context, msgBean);
                 break;
         }
         return null;

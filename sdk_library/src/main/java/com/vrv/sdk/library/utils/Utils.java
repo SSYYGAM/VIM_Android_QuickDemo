@@ -2,9 +2,12 @@ package com.vrv.sdk.library.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.vrv.sdk.library.R;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 /**
  * Created by Yang on 2015/8/20 020.
@@ -129,7 +133,24 @@ public class Utils {
         return ContextCompat.getDrawable(context, drawRes);
     }
 
-    private static int inputModeHeight = 0;
+    /**
+     * recyclerView divider
+     *
+     * @param context
+     * @return
+     */
+    public static RecyclerView.ItemDecoration buildDividerItemDecoration(Context context) {
+        return buildDividerItemDecoration(context, 0);
+    }
 
-
+    public static RecyclerView.ItemDecoration buildDividerItemDecoration(Context context, int colorID) {
+        HorizontalDividerItemDecoration.Builder builder = new HorizontalDividerItemDecoration.Builder(context);
+        if (colorID != 0) {
+            builder.drawable(new ColorDrawable(Color.TRANSPARENT));
+        } else {
+            builder.drawable(new ColorDrawable(context.getResources().getColor(R.color.vim_divider)));
+        }
+        builder.size(2);
+        return builder.build();
+    }
 }

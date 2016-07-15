@@ -3,12 +3,10 @@ package com.vrv.sdk.library.ui.view;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
-import android.text.format.Formatter;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,7 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.vrv.imsdk.SDKClient;
 import com.vrv.imsdk.api.ChatMsgApi;
 import com.vrv.imsdk.api.ConfigApi;
 import com.vrv.imsdk.api.MsgAudio;
@@ -30,15 +27,12 @@ import com.vrv.imsdk.api.MsgFile;
 import com.vrv.imsdk.api.MsgImage;
 import com.vrv.imsdk.api.MsgPosition;
 import com.vrv.imsdk.model.ChatMsg;
-import com.vrv.imsdk.model.ResultCallBack;
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.VimConstant;
 import com.vrv.sdk.library.action.RequestHandler;
 import com.vrv.sdk.library.action.RequestHelper;
-import com.vrv.sdk.library.bean.FileBean;
-import com.vrv.sdk.library.bean.OptionBean;
 import com.vrv.sdk.library.ui.activity.ChatPhotosActivity;
 import com.vrv.sdk.library.utils.DialogUtil;
-import com.vrv.sdk.library.utils.FileUtils;
 import com.vrv.sdk.library.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -68,8 +62,6 @@ public class ChatBurnView extends ChatMsgItemView {
     private String burnTime;
     private CountDownTimer countDownTimer;
     private ProgressBar fileProgressBar; // 文件下载进度
-    private AnimationDrawable animationDrawable;
-    private View audioImg;
     private ImageView imgView;
     private Handler mHandler;
     private boolean isDownload;
@@ -223,7 +215,7 @@ public class ChatBurnView extends ChatMsgItemView {
             public void onSelection(MaterialDialog materialDialog, View view, int i, CharSequence charSequence) {
                 switch (i) {
                     case 0:
-                        itemDataChangeListener.onItemOperation(OptionBean.TYPE_OPTION_MSG_DELETE, msgBean);
+                        itemDataChangeListener.onItemOperation(VimConstant.TYPE_MSG_DELETE, msgBean);
                         break;
 
                 }
@@ -272,7 +264,7 @@ public class ChatBurnView extends ChatMsgItemView {
      * 刷新界面数据
      */
     private void refreshData() {
-        itemDataChangeListener.onItemOperation(OptionBean.TYPE_OPTION_MSG_DELETE, msgBean);
+        itemDataChangeListener.onItemOperation(VimConstant.TYPE_MSG_DELETE, msgBean);
     }
 
 
@@ -295,15 +287,13 @@ public class ChatBurnView extends ChatMsgItemView {
         @Override
         public void handleFailure(int code, String message) {
             super.handleFailure(code, message);
-            imgView.setImageResource(R.mipmap.load_pic_lost);
+            imgView.setImageResource(R.mipmap.vim_load_pic_lost);
             isDownload = false;
         }
 
         @Override
         public void handleSuccess(Message msg) {
-            try {//关闭之后可能崩溃
-                //                String filePath = msg.getData().getString(KEY_DATA);
-                //                ImageUtil.loadViewLocalWithEncrypt(context, encryptKey, filePath, imgView, R.mipmap.load_pic_lost);
+            try {
                 String decryptFile = ConfigApi.decryptFile(imgBean.getEncDecKey(), imgBean.getThumbShowPath());
                 imgView.setImageBitmap(BitmapFactory.decodeFile(decryptFile));
                 sendDownloadSuccess();

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_audio_root">
+
+    <View
+        android:id="@+id/img_audio_from"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@null"
+        android:scaleType="center" />
+
+    <TextView
+        android:id="@+id/tv_audio_time"
+        style="@style/Vim_ItemWhiteTxStyle"
+        android:layout_toRightOf="@+id/img_audio_from"
+        android:layout_toLeftOf="@+id/img_audio_to" />
+
+    <View
+        android:id="@+id/img_audio_to"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@null"
+        android:scaleType="center"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

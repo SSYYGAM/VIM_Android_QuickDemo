@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/msg_status_burn"
+            android:src="@mipmap/vim_msg_status_burn"
             android:layout_gravity="center_vertical"/>
 
         <TextView

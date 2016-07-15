@@ -24,8 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:hint="请输入手机号"
-                android:text="vrv"/>
+                android:hint="请输入服务器地址"/>
 
             <EditText
                 android:id="@+id/editText"

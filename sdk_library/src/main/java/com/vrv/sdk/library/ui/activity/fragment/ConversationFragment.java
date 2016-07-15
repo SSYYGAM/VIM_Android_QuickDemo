@@ -19,6 +19,7 @@ import com.vrv.sdk.library.bean.BaseInfoBean;
 import com.vrv.sdk.library.ui.activity.ChatActivity;
 import com.vrv.sdk.library.ui.adapter.ConversationListAdapter;
 import com.vrv.sdk.library.utils.ToastUtil;
+import com.vrv.sdk.library.utils.VrvLog;
 
 import java.util.ArrayList;
 
@@ -56,7 +57,9 @@ public class ConversationFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BaseInfoBean baseInfoBean = BaseInfoBean.chat2BaseInfo(msgList.get(position));
-                if (ChatMsgApi.isUser(baseInfoBean.getID()) || ChatMsgApi.isGroup(baseInfoBean.getID())) {
+                if (ChatMsgApi.isUser(baseInfoBean.getID()) //个人
+                        || ChatMsgApi.isApp(baseInfoBean.getID())//公众号
+                        || ChatMsgApi.isGroup(baseInfoBean.getID())) {//群
                     ChatActivity.start(context, baseInfoBean);
                 } else {
                     ToastUtil.showShort(context, "请选择群或者个人聊天");
@@ -78,7 +81,11 @@ public class ConversationFragment extends Fragment {
 
             @Override
             public void notifyItemChange(int position) {
-                adapter.notifyDataSetChanged();
+                VrvLog.e("--->>>notify Item position:" + position);
+                msgList.set(position, SDKClient.instance().getChatService().getList().get(position));
+                if (adapter != null) {
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
     }

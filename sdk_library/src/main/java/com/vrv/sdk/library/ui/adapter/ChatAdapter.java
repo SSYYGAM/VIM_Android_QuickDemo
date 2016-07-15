@@ -1,7 +1,6 @@
 package com.vrv.sdk.library.ui.adapter;
 
 import android.content.Context;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vrv.imsdk.api.ChatMsgApi;
-import com.vrv.imsdk.bean.NoteInfoBean;
 import com.vrv.imsdk.model.ChatMsg;
 import com.vrv.imsdk.model.GroupMember;
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.VimConstant;
 import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.bean.BaseInfoBean;
 import com.vrv.sdk.library.listener.OnReSendChatMsgListener;
+import com.vrv.sdk.library.ui.activity.ChatActivity;
 import com.vrv.sdk.library.ui.view.ChatMessageView;
 import com.vrv.sdk.library.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.vrv.sdk.library.ui.activity.*;
-import com.vrv.sdk.library.bean.*;
-
 
 import static com.vrv.sdk.library.utils.TimeUtils.timeStamp2Date;
 
@@ -33,7 +29,7 @@ public class ChatAdapter extends BaseAdapter {
 
     private static final int TYPE_From_Msg = 0;
     private static final int TYPE_To_Msg = 1;
-    private Context activity;
+    private Context context;
     private List<ChatMsg> msgList = new ArrayList<ChatMsg>();
     private OnReSendChatMsgListener reSendListener;
     private BaseInfoBean baseInfoBean;
@@ -42,8 +38,8 @@ public class ChatAdapter extends BaseAdapter {
         this.reSendListener = listener;
     }
 
-    public ChatAdapter(Context activity, List<ChatMsg> msgList, BaseInfoBean baseInfoBean) {
-        this.activity = activity;
+    public ChatAdapter(Context context, List<ChatMsg> msgList, BaseInfoBean baseInfoBean) {
+        this.context = context;
         this.msgList = msgList;
         this.baseInfoBean = baseInfoBean;
     }
@@ -85,11 +81,11 @@ public class ChatAdapter extends BaseAdapter {
         if (convertView == null) {
             switch (type) {
                 case TYPE_From_Msg:
-                    convertView = LayoutInflater.from(activity).inflate(R.layout.vim_chat_from_item, null);
+                    convertView = LayoutInflater.from(context).inflate(R.layout.vim_chat_from_item, null);
                     holder = new ViewHolder(convertView);
                     break;
                 case TYPE_To_Msg:
-                    convertView = LayoutInflater.from(activity).inflate(R.layout.vim_chat_to_item, null);
+                    convertView = LayoutInflater.from(context).inflate(R.layout.vim_chat_to_item, null);
                     holder = new ViewHolder(convertView);
                     break;
             }
@@ -101,17 +97,18 @@ public class ChatAdapter extends BaseAdapter {
         holder.mImageView = (ImageView) convertView.findViewById(R.id.imageView);
         holder.mChatFromName = (TextView) convertView.findViewById(R.id.chat_from_name);
         holder.viewMessage = (ChatMessageView) convertView.findViewById(R.id.view_chat_message);
-
-        if (ChatMsgApi.isUser(chatMsg.getTargetID())) {
-            String path;
-            if (RequestHelper.isMyself(chatMsg.getSendID())) {
-                path = RequestHelper.getMyInfo().getAvatar();
-            } else {
-                path = baseInfoBean.getIcon();
+        String path = "";
+        if (RequestHelper.isMyself(chatMsg.getTargetID())) {
+            path = RequestHelper.getMyInfo().getAvatar();
+        } else if (ChatMsgApi.isUser(chatMsg.getTargetID()) || ChatMsgApi.isApp(chatMsg.getTargetID())) {
+            path = baseInfoBean.getIcon();
+        } else if (ChatMsgApi.isGroup(chatMsg.getTargetID())) {
+            final GroupMember member = ChatActivity.indexMemberByID(chatMsg.getTargetID());
+            if (member != null) {
+                path = member.getAvatar();
             }
-            Utils.loadHead(activity, path, holder.mImageView, R.mipmap.vim_icon_default_user);
         }
-        chatMsg = addName2Chatmsg(chatMsg);
+        Utils.loadHead(context, path, holder.mImageView, R.mipmap.vim_icon_default_user);
         holder.mMessageFromDate.setText(timeStamp2Date(chatMsg.getSendTime(), 3));
         holder.viewMessage.setViews(chatMsg, false, false);
         holder.viewMessage.setReSendListener(reSendListener);
@@ -124,8 +121,8 @@ public class ChatAdapter extends BaseAdapter {
             @Override
             public void onItemOperation(int type, final ChatMsg msg) {
                 switch (type) {
-                    case OptionBean.TYPE_OPTION_MSG_DELETE:
-                        deleteRemove(ChatActivity.getChatID(), msg, true);
+                    case VimConstant.TYPE_MSG_DELETE:
+                        deleteMsg(msg);
                         break;
                 }
             }
@@ -144,29 +141,10 @@ public class ChatAdapter extends BaseAdapter {
         }
     }
 
-    private ChatMsg addName2Chatmsg(ChatMsg msgBean) {
-        if (RequestHelper.isMyself(msgBean.getSendID())) {
-            msgBean.setName(RequestHelper.getMyInfo().getName());
-        } else if (ChatMsgApi.isUser(msgBean.getTargetID()) || ChatMsgApi.isApp(msgBean.getTargetID())) {
-            msgBean.setName(baseInfoBean.getName());
-        } else if (ChatMsgApi.isGroup(msgBean.getTargetID())) {
-            final GroupMember member = ChatActivity.getMemberBean(msgBean.getSendID());
-            if (member != null) {
-                msgBean.setName(member.getMemberName());
-            }
-        }
-        return msgBean;
-    }
-
-    /**
-     * @param chatID
-     * @param msg       彻底删除消息
-     * @param isRefresh
-     */
-    private void deleteRemove(long chatID, ChatMsg msg, boolean isRefresh) {
+    private void deleteMsg(ChatMsg msg) {
         ArrayList<Long> ids = new ArrayList<Long>();
         ids.add(msg.getMessageID());
-        RequestHelper.deleteMsgByID(ChatActivity.getChatID(), ids);
+        RequestHelper.deleteMsgByID(msg.getTargetID(), ids);
         msgList.remove(msg);
         notifyDataSetChanged();
     }

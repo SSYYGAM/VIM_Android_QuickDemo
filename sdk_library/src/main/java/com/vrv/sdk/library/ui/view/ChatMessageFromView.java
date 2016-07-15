@@ -46,7 +46,7 @@ public class ChatMessageFromView extends ChatMessageView {
             tvFromName.setVisibility(showName ? View.VISIBLE : View.GONE);
             long senderID = messageBean.getSendID();
             String name = null;
-            Contact member = ChatActivity.getMemberBean(senderID);
+            Contact member = ChatActivity.indexMemberByID(senderID);
             if (member != null) {
                 name = member.getName();
             }

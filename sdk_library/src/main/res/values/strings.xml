@@ -88,4 +88,12 @@
     <string name="vim_download">下载</string>
     <string name="vim_burn_time">剩余 %1$s s</string>
     <string name="vim_instant_burn">立即销毁</string>
+
+    <string name="vim_chat_photo">图片</string>
+    <string name="vim_chat_file">文件</string>
+    <string name="vim_chat_location">位置</string>
+    <string name="vim_chat_card">名片</string>
+    <string name="vim_chat_burn">阅后即焚</string>
+    <string name="vim_chat_video">视频</string>
+    <string name="vim_chat_shark">抖一抖</string>
 </resources>

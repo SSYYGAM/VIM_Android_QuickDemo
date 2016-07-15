@@ -3,8 +3,7 @@ package com.vrv.sdk.library.listener;
 import android.view.View;
 
 /**
- * RecycelView 选项点击长按监听
- * Created by Yang on 2015/8/19 019.
+ * RecyclerView 选项点击长按监听
  */
 public interface OnItemClickListener {
 

@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.vrv.imsdk.SDKClient;
 import com.vrv.imsdk.api.ChatMsgApi;
 import com.vrv.imsdk.api.Constants;
+import com.vrv.imsdk.bean.SimpleSearchResult;
 import com.vrv.imsdk.model.ItemModel;
 import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.action.RequestHandler;
@@ -106,7 +107,8 @@ public class SearchActivity extends BaseActivity {
         @Override
         public void handleSuccess(Message msg) {
             list.clear();
-            ArrayList<ItemModel> result = msg.getData().getParcelableArrayList(KEY_DATA);
+            SimpleSearchResult searchResult = msg.getData().getParcelable(KEY_DATA);
+            ArrayList<ItemModel> result = SDKClient.instance().getContactService().simpleResult2Item(searchResult);
             if (result != null && result.size() > 0) {
                 for (ItemModel itemModel : result) {
                     list.add(BaseInfoBean.itemModel2BaseInfo(itemModel));
@@ -185,7 +187,7 @@ public class SearchActivity extends BaseActivity {
         String verifyInfo = RequestHelper.getMyInfo().getName();
         requestHandler = new GetInfoHandler(GetInfoHandler.ADD_BUDDY, context);
         requestHandler.sendEmptyMessage(RequestHandler.SHOW_PRO);
-        boolean add = RequestHelper.addContact(userID, "", "", requestHandler);
+        boolean add = RequestHelper.addContact(userID, verifyInfo, "", requestHandler);
         if (!add) {
             requestHandler.sendEmptyMessage(RequestHandler.REQUEST_FALSE);
         }
@@ -264,7 +266,7 @@ public class SearchActivity extends BaseActivity {
             final String verifyInfo = RequestHelper.getMyInfo().getName();
             requestHandler = new GroupInfoHandler(GroupInfoHandler.ADD_GROUP, context);
             requestHandler.sendEmptyMessage(RequestHandler.SHOW_PRO);
-            boolean add = RequestHelper.addGroup(groupID, "", requestHandler);
+            boolean add = RequestHelper.addGroup(groupID, verifyInfo, requestHandler);
             if (!add) {
                 requestHandler.sendEmptyMessage(RequestHandler.REQUEST_FALSE);
             }

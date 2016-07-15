@@ -20,6 +20,8 @@ import com.vrv.imsdk.SDKClient;
 import com.vrv.imsdk.model.Contact;
 import com.vrv.imsdk.model.ServiceModel;
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.VimConstant;
+import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.listener.OnItemClickListener;
 import com.vrv.sdk.library.ui.activity.ContactDetailActivity;
 import com.vrv.sdk.library.ui.activity.GroupListActivity;
@@ -92,6 +94,12 @@ public class ContactFragment extends Fragment {
                 return false;
             }
         });
+
+        //默认机器人不是好友添加好友
+        if (!SDKClient.instance().getContactService().isFriend(VimConstant.DEFAULT_APP)) {
+            RequestHelper.addContact(VimConstant.DEFAULT_APP, "hi, echo", "", null);
+        }
+
     }
 
     private void setNotifyListener() {
