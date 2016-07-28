@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vim_background"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/vim_toolbar" />
+
+    <View
+        android:id="@+id/toolbar_line"
+        style="@style/Vim_DividerStyle"
+        android:layout_below="@id/title"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_line"
+        android:background="@color/vim_background" />
+
+</RelativeLayout>

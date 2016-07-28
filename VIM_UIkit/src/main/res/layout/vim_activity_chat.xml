@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/chat_title"
+        layout="@layout/vim_toolbar" />
+
+    <View
+        android:id="@+id/toolbar_line"
+        style="@style/Vim_DividerStyle"
+        android:layout_below="@id/title"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.vrv.sdk.library.chat.MessageListView
+            android:id="@+id/message_recycler"
+            android:layout_above="@+id/ll_chat_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_chat_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <include layout="@layout/vim_chat_input" />
+        </LinearLayout>
+    </RelativeLayout>
+    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
+        android:id="@+id/panel_root"
+        style="@style/Vim_ChatPanelStyle"
+        android:visibility="gone">
+
+        <com.vrv.sdk.library.chat.view.ChatInputOptionView
+            android:id="@+id/chat_option"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>
+</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

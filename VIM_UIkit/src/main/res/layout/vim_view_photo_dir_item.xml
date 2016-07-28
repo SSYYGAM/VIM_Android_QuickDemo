@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Vim_ItemH64PaddingStyle"
+    android:layout_height="96dp"
+    android:orientation="vertical"
+    android:paddingLeft="0dp"
+    android:paddingRight="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/vim_pictures_dir"/>
+
+            <ImageView
+                android:id="@+id/img_item_icon"
+                style="@style/Vim_ItemImgStyle"
+                android:layout_gravity="center"
+                android:scaleType="center"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                style="@style/Vim_ItemBlackTxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom" />
+
+            <TextView
+                android:id="@+id/tv_item_count"
+                style="@style/Vim_ItemGrayTxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_item_status"
+                style="@style/Vim_ItemImgStyle"
+                android:scaleType="centerInside"
+                android:src="@mipmap/vim_picture_dir_selected" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Vim_DividerStyle"
+        android:layout_marginLeft="16dp"/>
+</LinearLayout>

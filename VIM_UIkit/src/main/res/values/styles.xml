@@ -1,0 +1,162 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="SDKBaseTheme" parent="Theme.AppCompat.Light">
+        <!-- vim_toolbar（actionbar）颜色 -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/vim_colorPrimary</item>
+        <item name="homeAsUpIndicator">@mipmap/vim_action_back</item> <!--返回icon-->
+        <!-- 状态栏颜色-->
+        <!--<item name="colorPrimaryDark">@color/transparent</item>-->
+        <item name="android:titleTextStyle">@style/Vim_ToolbarStyle</item>
+        <!-- 窗口的背景颜色 -->
+        <item name="android:windowBackground">@color/vim_windowBackground</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <!--vim_toolbar 上title的样式-->
+    <style name="Vim_ToolbarStyle">
+        <item name="android:textColor">@color/vim_tx_black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@color/vim_colorPrimary</item>
+    </style>
+
+    <!-- 分割线 -->
+    <style name="Vim_DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.8dp</item>
+        <item name="android:background">@color/vim_divider</item>
+    </style>
+
+    <style name="Vim_ItemTxStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!--白色-->
+    <style name="Vim_ItemWhiteTxStyle" parent="Vim_ItemTxStyle">
+        <item name="android:textColor">@color/vim_white</item>
+    </style>
+
+    <!--黑色字体-->
+    <style name="Vim_ItemBlackTxStyle" parent="Vim_ItemTxStyle">
+        <item name="android:textColor">@color/vim_tx_black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--灰色字体-->
+    <style name="Vim_ItemGrayTxStyle" parent="Vim_ItemTxStyle">
+        <item name="android:textColor">@color/vim_tx_gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
+    <!-- 消息未读数 -->
+    <style name="Vim_UnreadMsgStyle">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">@mipmap/vim_icon_unread_bg</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!--正常大小 48dp-->
+    <style name="Vim_IconNormalStyle">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- 大头像  80dp-->
+    <style name="Vim_IconLargeStyle" parent="Vim_IconNormalStyle">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+
+    <style name="Vim_ItemImgStyle" parent="Vim_IconNormalStyle">
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="Vim_ChatPanelStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:background">@color/vim_white</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Vim_ChatPanelItemStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:textColor">@color/vim_tx_normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <!-- ItemLayout -->
+    <style name="Vim_ItemLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:background">@drawable/vim_item_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="Vim_ItemH64Style" parent="Vim_ItemLayoutStyle">
+        <item name="android:layout_height">64dp</item>
+    </style>
+
+    <style name="Vim_ItemH64PaddingStyle" parent="Vim_ItemH64Style">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="Vim_ItemTextStyle" parent="@style/Vim_ItemH64Style">
+        <item name="android:textColor">@color/vim_tx_black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+
+    <style name="Vim_LoadDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowBackground">@drawable/vim_round_square_bg</item>-->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="Vim_ProgressBarStyle" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/vim_progress_medium_white</item>
+    </style>
+
+    <style name="Vim_ChoiceStyle">
+        <item name="android:button">@drawable/vim_choice_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+    </style>
+    <style name="VimSideBarStyle">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|center_vertical</item>
+        <!--<item name="android:background">@drawable/vim_item_bg</item>-->
+    </style>
+</resources>

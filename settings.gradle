@@ -1,1 +1,1 @@
-include ':sdk_library', ':demo'
+include ':demo',':VIM_UIkit'

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vrv.sdk.library" >
+
+    <!--<application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppBaseTheme" >
+        &lt;!&ndash;登录界面&ndash;&gt;
+        <activity
+            android:name="com.vrv.sdk.library.ui.activity.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        &lt;!&ndash;会话界面&ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.MainActivity"/>
+        &lt;!&ndash; 群列表界面 &ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.GroupListActivity"/>
+        &lt;!&ndash;聊天界面&ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.ChatActivity"/>
+        &lt;!&ndash;注册界面&ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterActivity"/>
+        &lt;!&ndash;注册第二步&ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.RegisterStepActivity"/>
+        &lt;!&ndash;查找好友&ndash;&gt;
+        <activity android:name="com.vrv.sdk.library.ui.activity.SearchActivity"/>
+        &lt;!&ndash;必须添加的组件  begin&ndash;&gt;
+        <service android:name="com.vrv.imsdk.service.ApNotifyService"/>
+        <receiver android:name="com.vrv.imsdk.receiver.ApNotifyReceiver">
+            <intent-filter>
+                <action android:name="com.vrv.imsdk.receiver.ApNotifyReceiver"/>
+            </intent-filter>
+        </receiver>
+        &lt;!&ndash; android:process=":remote"/> &ndash;&gt;
+        <meta-data
+            android:name="com.vrv.imsdk"
+            android:value="0l"/>
+        &lt;!&ndash;必须添加的组件  end&ndash;&gt;
+    </application>
+    &lt;!&ndash;必须的权限 begin&ndash;&gt;
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TOP_ACTIVITY_INFO"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    &lt;!&ndash; 保持唤醒 &ndash;&gt;
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    &lt;!&ndash;必须的权限 end&ndash;&gt;-->
+</manifest>

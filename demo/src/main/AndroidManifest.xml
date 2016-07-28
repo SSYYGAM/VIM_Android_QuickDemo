@@ -56,6 +56,8 @@
             android:theme="@style/SDKBaseTheme"/>
         <activity android:name="com.vrv.sdk.library.ui.activity.LocationActivity"
             android:theme="@style/SDKBaseTheme"/>
+        <activity android:name="com.vrv.sdk.library.ui.activity.SelectGroupMemberActivity"
+            android:theme="@style/SDKBaseTheme"/>
 
         <!--必须添加的组件  begin-->
         <service android:name="com.vrv.imsdk.service.ApNotifyService"/>
