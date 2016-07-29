@@ -10,8 +10,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.sj.emoji.EmojiBean;
 import com.vrv.reclib_vrv.VrvExpressions;
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.VimConstant;
 import com.vrv.sdk.library.action.RequestHelper;
-import com.vrv.sdk.library.bean.OptionBean;
 import com.vrv.sdk.library.chat.common.ExpressionType;
 import com.vrv.sdk.library.chat.common.SimpleCommonUtils;
 import com.vrv.sdk.library.chat.qq.QqEmoticonsKeyBoard;
@@ -81,7 +81,7 @@ public class ChatQqActivity extends ChatBaseActivity {
                     case QqEmoticonsKeyBoard.FUNC_TYPE_BURN:
                         break;
                     case QqEmoticonsKeyBoard.FUNC_TYPE_POSITION:
-                        LocationActivity.startForResult((ChatQqActivity) context, OptionBean.TYPE_POSITION);
+                        LocationActivity.startForResult((ChatQqActivity) context, VimConstant.TYPE_POSITION);
                         break;
                     case QqEmoticonsKeyBoard.FUNC_TYPE_VOICE:
 
