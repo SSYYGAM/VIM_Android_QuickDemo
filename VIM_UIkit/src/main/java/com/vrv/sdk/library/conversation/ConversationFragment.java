@@ -14,7 +14,7 @@ import com.vrv.imsdk.model.ServiceModel;
 import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.bean.BaseInfoBean;
 import com.vrv.sdk.library.common.listener.OnItemClickListener;
-import com.vrv.sdk.library.ui.activity.ChatActivity;
+import com.vrv.sdk.library.ui.activity.ChatBaseActivity;
 import com.vrv.sdk.library.utils.ToastUtil;
 
 public class ConversationFragment extends Fragment {
@@ -51,7 +51,7 @@ public class ConversationFragment extends Fragment {
                 if (ChatMsgApi.isUser(baseInfoBean.getID()) //个人
                         || ChatMsgApi.isApp(baseInfoBean.getID())//公众号
                         || ChatMsgApi.isGroup(baseInfoBean.getID())) {//群
-                    ChatActivity.start(context, baseInfoBean);
+                    ChatBaseActivity.start(context, baseInfoBean, true);
                 } else {
                     ToastUtil.showShort(context, "请选择群或者个人聊天");
                 }

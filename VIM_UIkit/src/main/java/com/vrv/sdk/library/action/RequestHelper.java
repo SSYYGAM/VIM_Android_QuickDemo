@@ -3,7 +3,6 @@ package com.vrv.sdk.library.action;
 import android.text.TextUtils;
 
 import com.vrv.imsdk.SDKClient;
-import com.vrv.imsdk.api.ChatMsgApi;
 import com.vrv.imsdk.bean.ContactBean;
 import com.vrv.imsdk.bean.HiddenAccountInfoBean;
 import com.vrv.imsdk.bean.LocalSettingBean;
@@ -17,7 +16,7 @@ import com.vrv.imsdk.model.Contact;
 import com.vrv.imsdk.model.Group;
 import com.vrv.imsdk.model.GroupMember;
 import com.vrv.imsdk.model.SystemMsg;
-import com.vrv.sdk.library.ui.activity.ChatActivity;
+import com.vrv.sdk.library.ui.activity.ChatBaseActivity;
 
 import java.util.ArrayList;
 
@@ -118,6 +117,16 @@ public class RequestHelper {
         }
     }
 
+    /**
+     * 获取服务器密码规则
+     *
+     * @param handler
+     * @return
+     */
+    public static boolean getPasswordRule(RequestHandler handler) {
+        return SDKClient.instance().getAuth().getPasswordRule(CallBackHelper.buildCallBack(handler));
+    }
+
     // 删除聊天
     public static boolean deleteChat(long chatID) {
         return SDKClient.instance().getChatService().delete(chatID);
@@ -171,8 +180,75 @@ public class RequestHelper {
     public static boolean sendTxt(long targetID, String text, ArrayList<Long> relatedUsers, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createTxtMsg(text);
-        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
         builder.setRelatedUsers(relatedUsers);
+        builder.setActiveType((byte) (ChatBaseActivity.isBurn ? 1 : 0));
+        //        return SDKClient.instance().getChatMsgService().transferMsg(4328621794l, builder.build(), CallBackHelper.buildCallBack(handler));
+        return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
+    }
+
+    /**
+     * 用于发送 特殊的消息 ，如：指令消息
+     *
+     * @param targetID
+     * @param text
+     * @param handler
+     * @return
+     */
+    public static boolean sendTxt(long targetID, String text, RequestHandler handler) {
+        ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
+        builder.createTxtMsg(text);
+        return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
+    }
+
+
+    /**
+     * 发送弱提示
+     *
+     * @param targetID
+     * @param bodyJson
+     * @param msgProperties
+     * @param handler
+     * @return
+     */
+    public static boolean sendPrompt(long targetID, String bodyJson, String msgProperties, RequestHandler handler) {
+        ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
+        builder.createPromptMsg(bodyJson);
+        builder.setMsgProperties(msgProperties);
+        return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
+    }
+
+    /**
+     * 发送撤回消息命令
+     *
+     * @param targetID
+     * @param body          撤回消息发起人昵称
+     * @param msgProperties "timeZone":"时区",“messageID":"需要撤回消息ID"
+     * @param handler
+     * @return
+     */
+    public static boolean sendWithdraw(long targetID, String body, String msgProperties, RequestHandler handler) {
+        ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
+        builder.createWithdrawMsg(body);
+        builder.setMsgProperties(msgProperties);
+        return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
+
+    }
+
+    /**
+     * 发送图文网页
+     *
+     * @param targetID
+     * @param index
+     * @param title
+     * @param picUrl
+     * @param url
+     * @param description
+     * @param handler
+     * @return
+     */
+    public static boolean sendNews(long targetID, int index, String title, String picUrl, String url, String description, RequestHandler handler) {
+        ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
+        builder.createNewsMsg(index, title, picUrl, url, description);
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -180,7 +256,7 @@ public class RequestHelper {
     public static boolean sendImg(long targetID, String imgPath, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createImageMsg(imgPath);
-        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
+        builder.setActiveType((byte) (ChatBaseActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -188,7 +264,7 @@ public class RequestHelper {
     public static boolean sendFile(long targetID, String filePath, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createFileMsg(filePath);
-        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
+        builder.setActiveType((byte) (ChatBaseActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -203,7 +279,7 @@ public class RequestHelper {
     public static boolean sendPosition(long targetID, String address, String latitude, String longitude, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createPositionMsg(address, latitude, longitude);
-        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
+        builder.setActiveType((byte) (ChatBaseActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
@@ -219,16 +295,37 @@ public class RequestHelper {
     public static boolean sendAudio(long targetID, String audioPath, int time, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
         builder.createAudioMsg(audioPath, time);
-        builder.setActiveType((byte) (ChatActivity.isBurn ? 1 : 0));
+        builder.setActiveType((byte) (ChatBaseActivity.isBurn ? 1 : 0));
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
-    //发送图片
-    public static boolean sendVideoRequest(long targetID, RequestHandler handler) {
+    /**
+     * 发送动态表情
+     *
+     * @param targetID
+     * @param expression
+     * @param handler
+     * @return
+     */
+    public static boolean sendDynamic(long targetID, String expression, RequestHandler handler) {
         ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
-        builder.setMsgType(ChatMsgApi.TYPE_VIDEO);
-        builder.setMessage("AAA");
+        builder.createDynamicExpressionMsg(expression);
         return SDKClient.instance().getChatMsgService().sendMsg(builder.build(), CallBackHelper.buildCallBack(handler));
+    }
+
+
+    /**
+     * 转发消息
+     *
+     * @param targetID
+     * @param chatMsg
+     * @param handler
+     * @return
+     */
+    public static boolean transferMsg(long targetID, ArrayList<ChatMsg> chatMsg, RequestHandler handler) {
+        ChatMsgBuilder builder = new ChatMsgBuilder(targetID);
+        builder.createCompositeMsg(chatMsg);
+        return SDKClient.instance().getChatMsgService().transferMsg(targetID, builder.build(), CallBackHelper.buildCallBack(handler));
     }
 
     //重发失败消息
@@ -674,6 +771,10 @@ public class RequestHelper {
         return SDKClient.instance().getChatMsgService().editNote(bean, CallBackHelper.buildCallBack(handler));
     }
 
+    public static boolean archiveNotes(long noteId, boolean isArchive, RequestHandler handler) {
+        return SDKClient.instance().getChatMsgService().archiveNotes(noteId, isArchive, CallBackHelper.buildCallBack(handler));
+    }
+
     //绑定手机号第一步
     public static boolean bindPhone1(boolean bind, String phone, RequestHandler handler) {
         return SDKClient.instance().getAuth().bindPhoneStep1(bind, phone, CallBackHelper.buildCallBack(handler));
@@ -685,8 +786,8 @@ public class RequestHelper {
     }
 
     //绑定手机号第三步
-    public static boolean bindPhone3(boolean bind, long registryID, String code, RequestHandler handler) {
-        return SDKClient.instance().getAuth().bindPhoneStep3(bind, registryID, code, CallBackHelper.buildCallBack(handler));
+    public static boolean bindPhone3(boolean bind, long registryID, String phone, RequestHandler handler) {
+        return SDKClient.instance().getAuth().bindPhoneStep3(bind, registryID, phone, CallBackHelper.buildCallBack(handler));
     }
 
     //绑定邮箱
@@ -705,5 +806,34 @@ public class RequestHelper {
 
     public static boolean importMsg(ArrayList<ChatMsg> list, RequestHandler handler) {
         return SDKClient.instance().getChatMsgService().importMsg(list, CallBackHelper.buildCallBack(handler));
+    }
+
+    /**
+     * @param targetId
+     * @param type
+     * @param value
+     * @param handler
+     * @return
+     */
+    public static boolean setUserToTargetSwitch(long targetId, byte type, byte value, RequestHandler handler) {
+        return SDKClient.instance().getContactService().setUserToTargetSwitch(targetId, type, value, CallBackHelper.buildCallBack(handler));
+    }
+
+    /**
+     * @param targetId
+     * @param type
+     * @param handler
+     * @return
+     */
+    public static boolean getUserToTargetSwitch(long targetId, byte type, RequestHandler handler) {
+        return SDKClient.instance().getContactService().getUserToTargetSwitch(targetId, type, CallBackHelper.buildCallBack(handler));
+    }
+
+    public static boolean updateMsg(long targetID, ArrayList<Long> msgIDs, ArrayList<String> messages, ArrayList<String> msgPropertiess, RequestHandler handler) {
+        return SDKClient.instance().getChatMsgService().updateMsg(targetID, msgIDs, messages, msgPropertiess, CallBackHelper.buildCallBack(handler));
+    }
+
+    public static void updateMsg(long targetID, long msgIDs, String message, String msgProperties, RequestHandler handler) {
+        SDKClient.instance().getChatMsgService().updateMsg(targetID, msgIDs, message, msgProperties, CallBackHelper.buildCallBack(handler));
     }
 }

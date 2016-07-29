@@ -1,1 +1,1 @@
-include ':demo',':VIM_UIkit'
+include ':demo', ':VIM_UIkit', ':reclib-vrv'

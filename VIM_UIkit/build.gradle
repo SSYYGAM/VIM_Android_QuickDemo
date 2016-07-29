@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:cardview-v7:23.3.0'
@@ -38,4 +38,5 @@ dependencies {
     //添加头部视图（http://www.open-open.com/lib/view/open1434422599926.html）
     compile 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.5'
+    compile project(':reclib-vrv')
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vrv.sdk.library.chat.qq.QqEmoticonsKeyBoard android:id="@+id/ek_bar"
+                                                 xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- ListView、ScrollView、RecyclerView、Other -->
+            <!-- 聊天消息展示界面 -->
+            <com.vrv.sdk.library.chat.MessageListView
+                android:id="@+id/message_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_chat_input"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</com.vrv.sdk.library.chat.qq.QqEmoticonsKeyBoard>
