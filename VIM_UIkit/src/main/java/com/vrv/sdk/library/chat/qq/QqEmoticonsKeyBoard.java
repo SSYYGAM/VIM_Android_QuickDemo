@@ -72,7 +72,7 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
     public QqEmoticonsKeyBoard(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = mInflater.inflate(R.layout.view_keyboard_qq, this);
+        view = mInflater.inflate(R.layout.vim_view_keyboard_qq, this);
         initView();
         initFuncView();
     }
@@ -124,7 +124,7 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
     }
 
     protected View inflateFunc() {
-        return mInflater.inflate(R.layout.view_func_emoticon_qq, null);
+        return mInflater.inflate(R.layout.vim_view_func_emoticon_qq, null);
     }
 
     protected void initEditView() {
@@ -152,9 +152,9 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
             public void afterTextChanged(Editable s) {
                 if (!TextUtils.isEmpty(s)) {
                     if (ChatBaseActivity.isBurn) {
-                        btnSend.setBackgroundResource(R.drawable.btn_send_bg_burn);
+                        btnSend.setBackgroundResource(R.drawable.vim_btn_send_bg_burn);
                     } else {
-                        btnSend.setBackgroundResource(R.drawable.btn_send_bg);
+                        btnSend.setBackgroundResource(R.drawable.vim_btn_send_bg);
                     }
                 } else {
                     btnSend.setBackgroundResource(R.drawable.btn_send_bg_disable);
@@ -186,13 +186,13 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
     }
 
     public void resetIcon() {
-        btnVoice.setImageResource(R.drawable.qq_skin_aio_panel_ptt);
-        btnBurn.setImageResource(R.drawable.qq_skin_aio_panel_burn);
-        btnImage.setImageResource(R.drawable.qq_skin_aio_panel_image);
-        btnCard.setImageResource(R.drawable.qq_skin_aio_panel_card);
-        btnPosition.setImageResource(R.drawable.qq_skin_aio_panel_position);
-        btnEmoticon.setImageResource(R.drawable.qq_skin_aio_panel_emotion);
-        btnPlug.setImageResource(R.drawable.qq_skin_aio_panel_plus);
+        btnVoice.setImageResource(R.drawable.vim_qq_skin_aio_panel_ptt);
+        btnBurn.setImageResource(R.drawable.vim_qq_skin_aio_panel_burn);
+        btnImage.setImageResource(R.drawable.vim_qq_skin_aio_panel_image);
+        btnCard.setImageResource(R.drawable.vim_qq_skin_aio_panel_card);
+        btnPosition.setImageResource(R.drawable.vim_qq_skin_aio_panel_position);
+        btnEmoticon.setImageResource(R.drawable.vim_qq_skin_aio_panel_emotion);
+        btnPlug.setImageResource(R.drawable.vim_qq_skin_aio_panel_plus);
     }
 
     protected void toggleFuncView(int key) {
@@ -204,25 +204,25 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
         resetIcon();
         switch (key) {
             case FUNC_TYPE_VOICE:
-                btnVoice.setImageResource(R.mipmap.qq_skin_aio_panel_ptt_press);
+                btnVoice.setImageResource(R.mipmap.vim_qq_skin_aio_panel_ptt_press);
                 break;
             case FUNC_TYPE_BURN:
-                btnBurn.setImageResource(R.mipmap.qq_skin_aio_panel_ptv_press);
+                btnBurn.setImageResource(R.mipmap.vim_qq_skin_aio_panel_ptv_press);
                 break;
             case FUNC_TYPE_IMAGE:
-                btnImage.setImageResource(R.mipmap.qq_skin_aio_panel_image_press);
+                btnImage.setImageResource(R.mipmap.vim_qq_skin_aio_panel_image_press);
                 break;
             case FUNC_TYPE_CARD:
-                btnCard.setImageResource(R.mipmap.qq_skin_aio_panel_camera_press);
+                btnCard.setImageResource(R.mipmap.vim_qq_skin_aio_panel_camera_press);
                 break;
             case FUNC_TYPE_POSITION:
-                btnPosition.setImageResource(R.mipmap.qq_skin_aio_panel_hongbao_press);
+                btnPosition.setImageResource(R.mipmap.vim_qq_skin_aio_panel_hongbao_press);
                 break;
             case FUNC_TYPE_EMOTICON:
-                btnEmoticon.setImageResource(R.mipmap.qq_skin_aio_panel_emotion_press);
+                btnEmoticon.setImageResource(R.mipmap.vim_qq_skin_aio_panel_emotion_press);
                 break;
             case FUNC_TYPE_PLUG:
-                btnPlug.setImageResource(R.mipmap.qq_skin_aio_panel_plus_press);
+                btnPlug.setImageResource(R.mipmap.vim_qq_skin_aio_panel_plus_press);
                 break;
         }
     }
@@ -342,16 +342,16 @@ public class QqEmoticonsKeyBoard extends AutoHeightLayout implements EmoticonsFu
         } else if (i == R.id.btn_burn) {//阅后即焚
             ChatBaseActivity.isBurn = !ChatBaseActivity.isBurn;
             if (ChatBaseActivity.isBurn) {
-                etChat.setBackgroundResource(R.drawable.common_bg_round_red);
+                etChat.setBackgroundResource(R.drawable.vim_common_bg_round_red);
                 if (!TextUtils.isEmpty(etChat.getText())) {
-                    btnSend.setBackgroundResource(R.drawable.btn_send_bg_burn);
+                    btnSend.setBackgroundResource(R.drawable.vim_btn_send_bg_burn);
                 } else {
                     btnSend.setBackgroundResource(R.drawable.btn_send_bg_disable);
                 }
             } else {
-                etChat.setBackgroundResource(R.drawable.common_bg_round_white);
+                etChat.setBackgroundResource(R.drawable.vim_common_bg_round_white);
                 if (!TextUtils.isEmpty(etChat.getText())) {
-                    btnSend.setBackgroundResource(R.drawable.btn_send_bg);
+                    btnSend.setBackgroundResource(R.drawable.vim_btn_send_bg);
                 } else {
                     btnSend.setBackgroundResource(R.drawable.btn_send_bg_disable);
                 }

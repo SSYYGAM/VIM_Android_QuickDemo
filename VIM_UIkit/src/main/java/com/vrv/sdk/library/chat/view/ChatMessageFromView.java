@@ -6,9 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.vrv.imsdk.api.ChatMsgApi;
-import com.vrv.imsdk.model.Contact;
 import com.vrv.sdk.library.R;
-import com.vrv.sdk.library.ui.activity.ChatActivity;
 
 
 /**
@@ -41,15 +39,11 @@ public class ChatMessageFromView extends ChatMessageView {
 
     @Override
     protected void setName() {
-        if (ChatMsgApi.isGroup(ChatActivity.getChatID())) {
+        if (ChatMsgApi.isGroup(messageBean.getTargetID())) {
             showName = true;
             tvFromName.setVisibility(showName ? View.VISIBLE : View.GONE);
             long senderID = messageBean.getSendID();
-            String name = null;
-            Contact member = ChatActivity.indexMemberByID(senderID);
-            if (member != null) {
-                name = member.getName();
-            }
+            String name = messageBean.getName();
             tvFromName.setText(TextUtils.isEmpty(name) ? senderID + "" : name);
         }
     }
@@ -57,6 +51,6 @@ public class ChatMessageFromView extends ChatMessageView {
     @Override
     protected void displayNormalMsg() {
         super.displayNormalMsg();
-//        flMsg.setPadding(Utils.dip2px(context, 12f), Utils.dip2px(context, 4f), Utils.dip2px(context, 4f), Utils.dip2px(context, 4f));
+        //        flMsg.setPadding(Utils.dip2px(context, 12f), Utils.dip2px(context, 4f), Utils.dip2px(context, 4f), Utils.dip2px(context, 4f));
     }
 }

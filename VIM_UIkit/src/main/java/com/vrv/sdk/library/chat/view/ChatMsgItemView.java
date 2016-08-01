@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import com.vrv.imsdk.model.ChatMsg;
 import com.vrv.sdk.library.action.RequestHelper;
+import com.vrv.sdk.library.listener.ItemDataChangeListener;
 
 /**
  * Created by Yang on 2015/11/3 003.
@@ -47,11 +48,6 @@ public abstract class ChatMsgItemView extends LinearLayout {
     //监听itemview的长按事件，将操作结果返回上去，控制adapter，notifyDataSetChanged；isShowCheckbox，多选控制显示checkbox
     protected ItemDataChangeListener itemDataChangeListener;
 
-    public interface ItemDataChangeListener {
-        void ItemDataChange(boolean isShowCheckbox);
-
-        void onItemOperation(int type, ChatMsg msg);
-    }
 
     public void setItemDataChangeListener(ItemDataChangeListener listener) {
         if (listener != null) {

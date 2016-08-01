@@ -51,7 +51,7 @@ public class SelectGroupMemberActivity extends BaseActivity {
         listView.setLayoutManager(new LinearLayoutManager(context));
         RecyclerViewHeader headerView = (RecyclerViewHeader) contentView.findViewById(R.id.header);
         //全体成员
-        ((TextView)headerView.findViewById(R.id.name_tv)).setText("全体成员");
+        ((TextView) headerView.findViewById(R.id.name_tv)).setText("全体成员");
         headerView.findViewById(R.id.ll_contacts_group).setOnClickListener(this);
         headerView.attachTo(listView);
         adapter = new GroupMemberAdapter(context);
@@ -63,7 +63,7 @@ public class SelectGroupMemberActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (ChatActivity.getMemberList().size() > 0) {
+        if (ChatBaseActivity.getMemberList().size() > 0) {
             adapter.update();
         }
     }
@@ -93,15 +93,15 @@ public class SelectGroupMemberActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.ll_contacts_group){
+        if (v.getId() == R.id.ll_contacts_group) {
             GroupMember member = new GroupMember();
-            member.setId(ChatActivity.getChatID());
+            member.setId(ChatBaseActivity.getChatID());
             member.setName("全体成员");
             resultFinish(member);
         }
     }
 
-    private void resultFinish(GroupMember contact){
+    private void resultFinish(GroupMember contact) {
         Intent data = new Intent();
         data.putExtra("data", contact);
         setResult(RESULT_OK, data);

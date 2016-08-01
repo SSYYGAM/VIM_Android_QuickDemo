@@ -22,7 +22,7 @@ public class BigEmoticonsAdapter extends EmoticonsAdapter<EmojiBean> {
 
     public BigEmoticonsAdapter(Context context, EmoticonPageEntity emoticonPageEntity, EmoticonClickListener onEmoticonClickListener) {
         super(context, emoticonPageEntity, onEmoticonClickListener);
-        this.mItemHeight = (int) context.getResources().getDimension(R.dimen.item_emoticon_size_big);
+        this.mItemHeight = (int) context.getResources().getDimension(R.dimen.vim_item_emoticon_size_big);
         this.mItemHeightMaxRatio = DEF_HEIGHTMAXTATIO;
     }
 
@@ -31,7 +31,7 @@ public class BigEmoticonsAdapter extends EmoticonsAdapter<EmojiBean> {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.item_emoticon_big, null);
+            convertView = mInflater.inflate(R.layout.vim_item_emoticon_big, null);
             viewHolder.rootView = convertView;
             viewHolder.ly_root = (LinearLayout) convertView.findViewById(R.id.ly_root);
             viewHolder.iv_emoticon = (ImageView) convertView.findViewById(R.id.iv_emoticon);

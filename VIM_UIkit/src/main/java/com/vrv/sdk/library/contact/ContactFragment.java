@@ -69,6 +69,8 @@ public class ContactFragment extends Fragment {
 
     private void setViews() {
         setNotifyListener();
+        recycler.getData().addAll(SDKClient.instance().getContactService().getList());
+        ((ContactsAdapter) recycler.getAdapter()).notifyUpdate(recycler.getData());
         recycler.setOnItemClick(new OnItemClickListener() {
             @Override
             public void OnItemClick(int position, View view) {
@@ -94,7 +96,7 @@ public class ContactFragment extends Fragment {
             public void notifyDataChange() {
                 recycler.getData().clear();
                 recycler.getData().addAll(SDKClient.instance().getContactService().getList());
-                ((ContactsAdapter)recycler.getAdapter()).notifyUpdate(recycler.getData());
+                ((ContactsAdapter) recycler.getAdapter()).notifyUpdate(recycler.getData());
             }
 
             @Override

@@ -1,4 +1,4 @@
 <resources>
-    <dimen name="item_emoticon_size_big">60dp</dimen>
-    <dimen name="item_emoticon_size_40">40dp</dimen>
+    <dimen name="vim_item_emoticon_size_big">60dp</dimen>
+    <dimen name="vim_item_emoticon_size_40">40dp</dimen>
 </resources>

@@ -25,7 +25,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
                 android:layout_toLeftOf="@+id/btn_send"
-                android:background="@drawable/common_bg_round_white"
+                android:background="@drawable/vim_common_bg_round_white"
                 android:gravity="center_vertical"
                 android:lineSpacingExtra="4dp"
                 android:maxLines="4"
@@ -62,49 +62,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_image"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_image"/>
 
             <ImageView
                 android:id="@+id/btn_voice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_ptt"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_ptt"/>
 
             <ImageView
                 android:id="@+id/btn_emoticon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_emotion"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_emotion"/>
             <!--名片-->
             <ImageView
                 android:id="@+id/btn_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_card"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_card"/>
             <!--阅后即焚-->
             <ImageView
                 android:id="@+id/btn_burn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_burn"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_burn"/>
             <!--位置-->
             <ImageView
                 android:id="@+id/btn_position"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_position"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_position"/>
 
             <ImageView
                 android:id="@+id/btn_plug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/qq_skin_aio_panel_plus"/>
+                android:src="@drawable/vim_qq_skin_aio_panel_plus"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/action_reply"/>
+                android:src="@drawable/vim_action_reply"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/action_delete"/>
+                android:src="@drawable/vim_action_delete"/>
 
             <TextView
                 android:layout_width="wrap_content"

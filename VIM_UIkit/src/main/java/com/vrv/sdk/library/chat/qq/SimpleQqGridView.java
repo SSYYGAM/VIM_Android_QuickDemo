@@ -29,7 +29,7 @@ public class SimpleQqGridView extends RelativeLayout {
         super(context, attrs);
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.view_apps, this);
+        view = inflater.inflate(R.layout.vim_view_apps, this);
         setBackgroundColor(getResources().getColor(R.color.white));
         init();
     }
@@ -43,8 +43,8 @@ public class SimpleQqGridView extends RelativeLayout {
         gv_apps.setVerticalSpacing(EmoticonsKeyboardUtils.dip2px(context, 18));
         final ArrayList<AppBean> mAppBeanList = new ArrayList<>();
         //        mAppBeanList.add(new AppBean(R.mipmap.lcw, "QQ电话"));
-        mAppBeanList.add(new AppBean(R.mipmap.lde, "视频电话"));
-        mAppBeanList.add(new AppBean(R.mipmap.lcu, "文件"));
+        mAppBeanList.add(new AppBean(R.mipmap.vim_lde, "视频电话"));
+        mAppBeanList.add(new AppBean(R.mipmap.vim_lcu, "文件"));
         //        mAppBeanList.add(new AppBean(R.mipmap.ldh, "短视频"));
         //        mAppBeanList.add(new AppBean(R.mipmap.lcx, "收藏"));
         //        mAppBeanList.add(new AppBean(R.mipmap.ldc, "发红包"));

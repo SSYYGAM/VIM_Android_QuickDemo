@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.vrv.imsdk.model.ChatMsg;
 import com.vrv.sdk.library.R;
+import com.vrv.sdk.library.listener.ItemDataChangeListener;
 import com.vrv.sdk.library.listener.OnReSendChatMsgListener;
 import com.vrv.sdk.library.utils.DateTimeUtils;
 
@@ -179,7 +180,7 @@ public abstract class ChatMessageView extends LinearLayout implements View.OnCli
     protected void setListeners() {
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
-        itemView.setItemDataChangeListener(new ChatMsgItemView.ItemDataChangeListener() {
+        itemView.setItemDataChangeListener(new ItemDataChangeListener() {
             @Override
             public void ItemDataChange(boolean isShowCheckbox) {
                 itemDataChangeListener.ItemDataChange(isShowCheckbox);
@@ -195,12 +196,6 @@ public abstract class ChatMessageView extends LinearLayout implements View.OnCli
 
     //长按消息体，操作消息需要更新页面，控制adapter，notifyDataSetChanged；此处暂时只传递值，
     protected ItemDataChangeListener itemDataChangeListener;
-
-    public interface ItemDataChangeListener {
-        void ItemDataChange(boolean isShowCheckbox);
-
-        void onItemOperation(int type, ChatMsg msg);
-    }
 
     public void setItemDataChangeListener(ItemDataChangeListener listener) {
         if (listener != null) {

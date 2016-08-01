@@ -10,8 +10,7 @@
         <com.vrv.sdk.library.contact.ContactsView
             android:id="@+id/lv_contact"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|top"/>
+            android:layout_height="match_parent"/>
 
         <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
             android:id="@+id/header"

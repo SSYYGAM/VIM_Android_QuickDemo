@@ -123,7 +123,7 @@ public class ContactDetailActivity extends BaseActivity {
                 contact = new Contact();
                 contact.setId(userID);
             }
-            ChatActivity.start(context, BaseInfoBean.contact2BaseInfo(contact));
+            ChatBaseActivity.start(context, BaseInfoBean.contact2BaseInfo(contact), true);
         }
     }
 

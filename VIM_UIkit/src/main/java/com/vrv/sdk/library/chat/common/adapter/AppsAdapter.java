@@ -47,7 +47,7 @@ public class AppsAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.item_app, null);
+            convertView = inflater.inflate(R.layout.vim_item_app, null);
             viewHolder.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
             viewHolder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             convertView.setTag(viewHolder);

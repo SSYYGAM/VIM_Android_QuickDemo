@@ -16,13 +16,14 @@ import com.vrv.imsdk.model.GroupMember;
 import com.vrv.sdk.library.R;
 import com.vrv.sdk.library.action.RequestHelper;
 import com.vrv.sdk.library.bean.BaseInfoBean;
+import com.vrv.sdk.library.chat.view.ChatMessageView;
 import com.vrv.sdk.library.common.UserInfoConfig;
 import com.vrv.sdk.library.common.adapter.BaseRecyclerAdapter;
 import com.vrv.sdk.library.common.adapter.BaseRecyclerViewHolder;
+import com.vrv.sdk.library.listener.ItemDataChangeListener;
 import com.vrv.sdk.library.listener.OnReSendChatMsgListener;
 import com.vrv.sdk.library.ui.activity.ChatActivity;
 import com.vrv.sdk.library.ui.activity.ContactDetailActivity;
-import com.vrv.sdk.library.chat.view.ChatMessageView;
 import com.vrv.sdk.library.utils.ChatMsgUtil;
 
 import java.util.ArrayList;
@@ -183,7 +184,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<MessageAdapter.MessageVi
             viewHolder.chatMsgView.setViews(msgBean, false, false);
             viewHolder.chatMsgView.setReSendListener(reSendListener);
             final ChatMsg finalMsgBean = msgBean;
-            viewHolder.chatMsgView.setItemDataChangeListener(new ChatMessageView.ItemDataChangeListener() {
+            viewHolder.chatMsgView.setItemDataChangeListener(new ItemDataChangeListener() {
                 @Override
                 public void ItemDataChange(boolean isShowCheckbox) {
                     isShowCheckBox = isShowCheckbox;
@@ -221,8 +222,9 @@ public class MessageAdapter extends BaseRecyclerAdapter<MessageAdapter.MessageVi
             if (member != null) {
                 path = member.getAvatar();
                 gender = member.getGender();
+                msgList.get(position).setName(member.getMemberName());
+                setIconOnLongClickListener(imageView, member.getId(), member.getMemberName());
             }
-            setIconOnLongClickListener(imageView, member.getId(), member.getMemberName());
         }
         UserInfoConfig.loadHeadByGender(context, path, imageView, gender);
 

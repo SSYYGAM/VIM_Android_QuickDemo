@@ -25,7 +25,7 @@ public class QqEmoticonsToolBarView extends EmoticonsToolBarView {
     }
 
     protected View getCommonItemToolBtn() {
-        return mInflater == null ? null : mInflater.inflate(R.layout.item_toolbtn_qq, null);
+        return mInflater == null ? null : mInflater.inflate(R.layout.vim_item_toolbtn_qq, null);
     }
 
     protected void initItemToolBtn(View toolBtnView, int rec, final PageSetEntity pageSetEntity, OnClickListener onClickListener) {

@@ -55,7 +55,7 @@ public class GroupListActivity extends BaseActivity {
             public void OnItemClick(int position, View view) {
                 Group group = recycler.getData().get(position);
                 BaseInfoBean infoBean = BaseInfoBean.group2BaseInfo(group);
-                ChatActivity.start(context, infoBean);
+                ChatBaseActivity.start(context, infoBean, true);
             }
 
             @Override

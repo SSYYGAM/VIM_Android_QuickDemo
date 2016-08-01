@@ -60,7 +60,7 @@ public class ChatActivity extends BaseActivity {
     private ChatInputOptionView chatInputOptionView;
 
     private static long chatID = 0;
-    private boolean groupChat ;//是否群聊
+    private boolean groupChat;//是否群聊
     private BaseInfoBean baseInfo;
     private long lastMsgID = 0;
     private final int msgOffSet = 18;//单次拉取历史记录个数
@@ -75,15 +75,15 @@ public class ChatActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static long getChatID() {
+    private long getChatID() {
         return chatID;
     }
 
-    public static ArrayList<GroupMember> getMemberList() {
+    private ArrayList<GroupMember> getMemberList() {
         return memberList == null ? new ArrayList<GroupMember>() : memberList;
     }
 
-    public static GroupMember indexMemberByID(long userID) {
+    private GroupMember indexMemberByID(long userID) {
         for (GroupMember bean : getMemberList()) {
             if (bean.getId() == userID) {
                 return bean;
@@ -97,7 +97,7 @@ public class ChatActivity extends BaseActivity {
         isBurn = false;
         memberList = new ArrayList<>();
         groupChat = ChatMsgApi.isGroup(chatID);
-        if (!groupChat){
+        if (!groupChat) {
             messageListView.setContact(baseInfo);
         }
     }
@@ -284,7 +284,7 @@ public class ChatActivity extends BaseActivity {
         }
         RequestHelper.sendTxt(chatID, inputEt.getText().toString(), relaterUsers, new ChatHandler(ChatHandler.TYPE_SEND_MSG));
         inputEt.getText().clear();
-        if (atUserMap !=null ){
+        if (atUserMap != null) {
             atUserMap.clear();
         }
     }
@@ -341,7 +341,7 @@ public class ChatActivity extends BaseActivity {
     /**
      * 操作键盘 ，实现键盘和操作栏无缝切换
      */
-    private void keyboardSetting(){
+    private void keyboardSetting() {
         KeyboardUtil.attach(this, panelRootKP,
                 new KeyboardUtil.OnKeyboardShowingListener() {
                     @Override
@@ -377,7 +377,7 @@ public class ChatActivity extends BaseActivity {
         if (chatMsg.getTargetID() == chatID) {
             messageListView.getData().add(chatMsg);
             messageListView.getAdapter().notifyDataSetChanged();
-            messageListView.scrollToPosition(messageListView.getData().size()-1);
+            messageListView.scrollToPosition(messageListView.getData().size() - 1);
         }
     }
 
