@@ -1,3 +1,8 @@
+[![Build](https://img.shields.io/travis/react-melon/melon-core.svg)](https://travis-ci.org/react-melon/melon-core)
+[![Coverage Status](https://img.shields.io/coveralls/react-melon/melon-core/master.svg)](https://coveralls.io/github/react-melon/melon-core)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://www.linkdood.cn/index)
+[![Coverity Code Advisor On Demand Stream Badge](https://img.shields.io/coverity/ondemand/streams/STREAM.svg?maxAge=2592000)](http://www.linkdood.cn/index)
+
 #信源豆豆Android SDK快速入门
 ###快速开始
 * 开始集成豆豆SDK
