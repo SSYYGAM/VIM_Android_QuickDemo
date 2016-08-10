@@ -1,4 +1,4 @@
-[![Build](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo.svg?branch=master)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
+[![Build](https://img.shields.io/wercker/ci/wercker/docs.svg)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
 [![Coverage Status](https://img.shields.io/coveralls/react-melon/melon-core/master.svg)](https://coveralls.io/github/react-melon/melon-core)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://www.linkdood.cn/index)
 [![Coverity Code Advisor On Demand Stream Badge](https://img.shields.io/coverity/ondemand/streams/STREAM.svg?maxAge=2592000)](http://www.linkdood.cn/index)
