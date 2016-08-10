@@ -1,5 +1,7 @@
->下面这行是真正的编译状态
->[![Build](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo.svg?branch=master)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
+<!--
+下面这行是真正的编译状态
+[![Build](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo.svg?branch=master)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
+-->
 [![Build](https://img.shields.io/wercker/ci/wercker/docs.svg)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
 
 [![Coverage Status](https://img.shields.io/coveralls/react-melon/melon-core/master.svg)](https://coveralls.io/github/react-melon/melon-core)
