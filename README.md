@@ -1,13 +1,14 @@
 <!--
-如果你被它编译失败所困扰把第7行代码换成第3行的就可以了
+如果你被它编译失败所困扰把第10行代码换成第3行的就可以了
 [![Build](https://img.shields.io/wercker/ci/wercker/docs.svg)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo)
 -->
-| 语言| 编译状态 |
-| ------------- |:-------------:|
-| JAVA | [![Build](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo.svg?branch=master)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo) |
-
 
 #信源豆豆Android SDK快速入门
+
+| 语言| 编译状态 |
+| ------------- |:-------------:|
+| JAVA | [![Build](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo.svg?branch=master)](https://travis-ci.org/VRVIM/VIM_Android_QuickDemo) 
+
 ###快速开始
 * 开始集成豆豆SDK
 * 加入豆豆，注册豆豆账号
